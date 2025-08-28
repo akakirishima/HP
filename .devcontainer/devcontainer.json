@@ -1,0 +1,21 @@
+{
+  "name": "frontend (compose)",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "web",
+  "workspaceFolder": "/app",
+  "overrideCommand": false,
+  "forwardPorts": [5173],
+  "portsAttributes": { "5173": { "label": "Vite dev server" } },
+  "containerEnv": {
+    "TZ": "Asia/Tokyo",
+    "CHOKIDAR_USEPOLLING": "true"
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "settings": { "files.encoding": "utf8", "files.eol": "\n", "editor.tabSize": 2, "editor.formatOnSave": true },
+      "extensions": ["esbenp.prettier-vscode","dbaeumer.vscode-eslint"]
+    }
+  },
+  "mounts": ["type=cache,target=/home/node/.npm"]
+}

@@ -1,4 +1,23 @@
-# React + TypeScript + Vite
+# Project Overview
+
+This is a React + TypeScript application scaffolded with Vite. The app has been stabilized by recreating a clean `src/App.tsx` and hardening the root mounting logic.
+
+## Quick Start
+
+- Prerequisites: Node.js 18+ and npm 9+
+- Install dependencies: `npm install`
+- Start dev server: `npm run dev`
+- Build for production: `npm run build`
+- Preview production build: `npm run preview`
+
+## Notes
+
+- The root element is validated in `src/main.tsx` to avoid null assertion crashes.
+- Choose and set a project license in `package.json` (currently `UNLICENSED`). If you decide on an open-source license (e.g., MIT), also add a `LICENSE` file at the repo root.
+
+---
+
+# React + TypeScript + Vite (Template Notes)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

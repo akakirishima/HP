@@ -1,0 +1,4 @@
+﻿# 余計なものをbuildコンテキストに送らない
+node_modules
+dist
+.git

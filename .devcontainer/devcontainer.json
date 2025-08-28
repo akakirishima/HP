@@ -1,27 +1,21 @@
 {
-  "name": "react-vite-devcontainer",
-  "dockerComposeFile": [
-    "../docker-compose.yml"
-  ],
+  "name": "frontend (compose)",
+  "dockerComposeFile": ["../docker-compose.yml"],
   "service": "web",
   "workspaceFolder": "/app",
-  "overrideCommand": true,
-  "postCreateCommand": "npm install",
+  "overrideCommand": false,
   "forwardPorts": [5173],
-  "portsAttributes": {
-    "5173": {
-      "label": "Vite Dev Server",
-      "onAutoForward": "notify"
-    }
+  "portsAttributes": { "5173": { "label": "Vite dev server" } },
+  "containerEnv": {
+    "TZ": "Asia/Tokyo",
+    "CHOKIDAR_USEPOLLING": "true"
   },
-  "remoteUser": "node",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
-      ]
+      "settings": { "files.encoding": "utf8", "files.eol": "\n", "editor.tabSize": 2, "editor.formatOnSave": true },
+      "extensions": ["esbenp.prettier-vscode","dbaeumer.vscode-eslint"]
     }
-  }
+  },
+  "mounts": ["type=cache,target=/home/node/.npm"]
 }
-

@@ -1,4 +1,4 @@
-import React from "react";
+// Work page
 import { useLanguage } from "../contexts/LanguageContext";
 
 const experiences = [

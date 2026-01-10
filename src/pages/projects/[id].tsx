@@ -1,4 +1,4 @@
-import React from "react";
+// Project detail page
 import { useLanguage } from "../../contexts/LanguageContext";
 import { getProjectById } from "../../data/projects";
 

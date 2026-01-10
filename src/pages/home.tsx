@@ -1,4 +1,4 @@
-import React from "react";
+// Home page
 import { useLanguage } from "../contexts/LanguageContext";
 
 export default function HomePage() {

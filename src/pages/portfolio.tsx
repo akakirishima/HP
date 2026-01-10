@@ -1,4 +1,4 @@
-import React from "react";
+// Portfolio page
 import { useLanguage } from "../contexts/LanguageContext";
 import { projects } from "../data/projects";
 

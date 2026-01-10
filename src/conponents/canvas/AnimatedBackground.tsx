@@ -87,7 +87,6 @@ const WavePointsMaterial = shaderMaterial(
 extend({ WavePointsMaterial });
 
 function FullscreenPoints() {
-  // @ts-expect-error - provided by extend
   const mat = useRef<THREE.ShaderMaterial>(null!)
   const { viewport } = useThree()
 

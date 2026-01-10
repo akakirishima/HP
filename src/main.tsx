@@ -1,15 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import PageRouter from './conponents/PageRouter'
 import './index.css'
-import App from './App.tsx'
 
-const rootElement = document.getElementById('root')
-if (!rootElement) {
-  throw new Error("Failed to find the root element with id 'root'.")
-}
+import { LanguageProvider } from './contexts/LanguageContext'
 
-createRoot(rootElement).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <LanguageProvider>
+      <PageRouter />
+    </LanguageProvider>
+  </React.StrictMode>
 )

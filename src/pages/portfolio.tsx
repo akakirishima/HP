@@ -1,6 +1,7 @@
 // Portfolio page
 import { useLanguage } from "../contexts/LanguageContext";
 import { projects } from "../data/projects";
+import { Link } from "react-router-dom";
 
 export default function PortfolioPage() {
   const { t, language } = useLanguage();
@@ -16,9 +17,9 @@ export default function PortfolioPage() {
 
       <div className="card-grid">
         {projects.map((project, i) => (
-          <a
+          <Link
             key={project.id}
-            href={`#/projects/${project.id}`}
+            to={`/projects/${project.id}`}
             className="project-card animate-fade-in-up"
             style={{
               animationDelay: `${0.1 * i}s`,
@@ -54,7 +55,7 @@ export default function PortfolioPage() {
                 ))}
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </main>

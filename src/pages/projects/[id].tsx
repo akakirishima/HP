@@ -1,18 +1,12 @@
 // Project detail page
+import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from "../../contexts/LanguageContext";
 import { getProjectById } from "../../data/projects";
 
-// Get project ID from URL hash (e.g., #/projects/deepself-tree -> deepself-tree)
-function getProjectIdFromHash(): string {
-    const hash = window.location.hash || '';
-    const match = hash.match(/^#\/projects\/(.+)$/);
-    return match ? match[1] : '';
-}
-
 export default function ProjectDetailPage() {
     const { language } = useLanguage();
-    const projectId = getProjectIdFromHash();
-    const project = getProjectById(projectId);
+    const { id } = useParams<{ id: string }>(); // Get project ID from URL parameter
+    const project = getProjectById(id || '');
 
     if (!project) {
         return (
@@ -20,9 +14,9 @@ export default function ProjectDetailPage() {
                 <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
                     {language === 'ja' ? 'プロジェクトが見つかりません' : 'Project Not Found'}
                 </h1>
-                <a href="#/portfolio" className="btn btn-outline">
+                <Link to="/portfolio" className="btn btn-outline">
                     {language === 'ja' ? '← 作品集に戻る' : '← Back to Portfolio'}
-                </a>
+                </Link>
             </main>
         );
     }
@@ -30,8 +24,8 @@ export default function ProjectDetailPage() {
     return (
         <main style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem 1.5rem 6rem' }}>
             {/* Back Button */}
-            <a
-                href="#/portfolio"
+            <Link
+                to="/portfolio"
                 className="animate-fade-in"
                 style={{
                     display: 'inline-flex',
@@ -46,7 +40,7 @@ export default function ProjectDetailPage() {
                     <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
                 {language === 'ja' ? '作品集に戻る' : 'Back to Portfolio'}
-            </a>
+            </Link>
 
             {/* Header */}
             <div className="animate-fade-in-up" style={{ marginBottom: '3rem' }}>

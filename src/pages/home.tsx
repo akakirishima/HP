@@ -1,4 +1,4 @@
-// Home page
+import { Link } from 'react-router-dom';
 import { useLanguage } from "../contexts/LanguageContext";
 
 export default function HomePage() {
@@ -63,12 +63,12 @@ export default function HomePage() {
 
         {/* CTA Button */}
         <div className="animate-fade-in-up animate-delay-3" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-          <a href="#/portfolio" className="btn btn-primary">
+          <Link to="/portfolio" className="btn btn-primary">
             {language === 'ja' ? '作品を見る' : 'View Portfolio'}
-          </a>
-          <a href="#/contact" className="btn btn-outline">
+          </Link>
+          <Link to="/contact" className="btn btn-outline">
             {language === 'ja' ? 'お問い合わせ' : 'Contact Me'}
-          </a>
+          </Link>
         </div>
 
         {/* Scroll Indicator */}

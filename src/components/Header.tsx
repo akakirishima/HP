@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 type NavLink = { href: string; labelKey: string };
 
@@ -15,20 +16,14 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
   const { language, setLanguage, t } = useLanguage();
 
   const links: NavLink[] = [
-    { href: '#/home', labelKey: 'nav_home' },
-    { href: '#/work', labelKey: 'nav_work' },
-    { href: '#/blog', labelKey: 'nav_blog' },
-    { href: '#/portfolio', labelKey: 'nav_portfolio' },
-    { href: '#/contact', labelKey: 'nav_contact' },
+    { href: '/', labelKey: 'nav_home' },
+    { href: '/work', labelKey: 'nav_work' },
+    { href: '/blog', labelKey: 'nav_blog' },
+    { href: '/portfolio', labelKey: 'nav_portfolio' },
+    { href: '/contact', labelKey: 'nav_contact' },
   ];
 
-  // Auto-close mobile menu on hash navigation
-  useEffect(() => {
-    const closeMenu = () => setMobileMenuOpen(false);
-    window.addEventListener('hashchange', closeMenu);
-    return () => window.removeEventListener('hashchange', closeMenu);
-  }, []);
-
+  // Auto-close mobile menu on navigation
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
   };
@@ -62,11 +57,11 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
             {/* Desktop Navigation */}
             <nav className="nav nav--desktop" aria-label="Main navigation">
               {links.map((l) => {
-                const isActive = activeHref === l.href;
+                const isActive = activeHref === l.href || (l.href !== '/' && activeHref?.startsWith(l.href));
                 return (
-                  <a
+                  <Link
                     key={l.href}
-                    href={l.href}
+                    to={l.href}
                     style={{
                       marginRight: 24,
                       color: isActive ? '#004098' : '#333',
@@ -81,7 +76,7 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
                   >
                     {/* @ts-expect-error - key type safety handled by context */}
                     {t(l.labelKey)}
-                  </a>
+                  </Link>
                 );
               })}
 
@@ -138,17 +133,17 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
         aria-label="Mobile navigation"
       >
         {links.map((l) => {
-          const isActive = activeHref === l.href;
+          const isActive = activeHref === l.href || (l.href !== '/' && activeHref?.startsWith(l.href));
           return (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              to={l.href}
               className={isActive ? 'active' : ''}
               onClick={handleLinkClick}
             >
               {/* @ts-expect-error - key type safety */}
               {t(l.labelKey)}
-            </a>
+            </Link>
           );
         })}
         <button

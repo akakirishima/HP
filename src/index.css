@@ -410,11 +410,15 @@ a:hover {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .timeline-desc {
   color: var(--c-text-sub);
   line-height: 1.7;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* =============================================
@@ -423,8 +427,8 @@ a:hover {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .project-card {
@@ -464,6 +468,8 @@ a:hover {
   color: var(--c-text-sub);
   font-size: 0.95rem;
   line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .project-card__tags {
@@ -559,7 +565,28 @@ a:hover {
   }
 
   .timeline {
-    padding-left: 32px;
+    padding-left: 24px;
+  }
+
+  .timeline-item::before {
+    left: -30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .section {
+    padding: 40px 0;
   }
 }
 

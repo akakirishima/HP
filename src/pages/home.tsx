@@ -79,7 +79,7 @@ export default function HomePage() {
           {language === 'ja' ? 'スキル' : 'Skills'}
         </h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px', marginTop: '2rem' }}>
+        <div className="skills-grid">
           {[
             { title: 'Frontend', items: ['React', 'TypeScript', 'Next.js', 'Vue.js'] },
             { title: 'Backend', items: ['Node.js', 'Python', 'PostgreSQL', 'Firebase'] },

@@ -484,6 +484,74 @@ select:focus-visible {
 }
 
 /* =============================================
+   PROFILE SECTION
+   ============================================= */
+
+.section-profile {
+  padding: 4rem 1.5rem;
+  background: var(--c-bg-sub);
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .profile-container {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 48px;
+  }
+}
+
+.profile-image-wrapper {
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid white;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-content {
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--c-primary);
+}
+
+.profile-role {
+  font-size: 1.1rem;
+  color: var(--c-text-sub);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.profile-bio {
+  line-height: 1.7;
+  color: var(--c-text-main);
+  margin-bottom: 1.5rem;
+}
+
+/* =============================================
    TIMELINE (for Work page)
    ============================================= */
 

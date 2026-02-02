@@ -47,6 +47,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Profile Section (NEW) */}
+      <section className="section-profile">
+        <div className="profile-container animate-fade-in-up">
+          <div className="profile-image-wrapper">
+            <img src="/profile.svg" alt="Profile" className="profile-image" />
+          </div>
+          <div className="profile-content">
+            <h2 className="profile-name">
+              {language === 'ja' ? '霧島' : 'Kirishima'}
+            </h2>
+            <p className="profile-role">
+              Web Developer / UI Designer
+            </p>
+            <p className="profile-bio">
+              {language === 'ja'
+                ? '東京を拠点に活動するWebデベロッパーです。使いやすさと美しさを兼ね備えたデジタルプロダクトを作ることに情熱を注いでいます。'
+                : 'A Web Developer based in Tokyo. Passionate about creating digital products that combine usability and aesthetics.'}
+            </p>
+            <Link to="/about" className="btn btn-outline" style={{ padding: '8px 24px', fontSize: '0.9rem' }}>
+              {language === 'ja' ? 'もっと詳しく' : 'More About Me'}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* News / Topics Section */}
       <section className="section page page--detail" style={{ padding: '4rem 1.5rem' }}>
         <h2 className="section-title">

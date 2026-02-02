@@ -466,13 +466,17 @@ select:focus-visible {
 
 .timeline {
   position: relative;
-  padding-left: 40px;
+  --timeline-padding: 40px;
+  --timeline-line-x: 8px;
+  --timeline-dot-size: 14px;
+  --timeline-dot-border: 3px;
+  padding-left: var(--timeline-padding);
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 8px;
+  left: var(--timeline-line-x);
   top: 0;
   bottom: 0;
   width: 2px;
@@ -489,13 +493,13 @@ select:focus-visible {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -36px;
+  left: calc(var(--timeline-line-x) - var(--timeline-padding) - (var(--timeline-dot-size) / 2) - var(--timeline-dot-border));
   top: 8px;
-  width: 14px;
-  height: 14px;
+  width: var(--timeline-dot-size);
+  height: var(--timeline-dot-size);
   background: var(--c-primary);
   border-radius: 50%;
-  border: 3px solid white;
+  border: var(--timeline-dot-border) solid white;
   box-shadow: var(--shadow-sm);
 }
 
@@ -816,11 +820,7 @@ select:focus-visible {
   }
 
   .timeline {
-    padding-left: 24px;
-  }
-
-  .timeline-item::before {
-    left: -30px;
+    --timeline-padding: 24px;
   }
 }
 

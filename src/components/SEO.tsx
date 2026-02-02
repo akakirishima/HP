@@ -10,12 +10,22 @@ type SEOProps = {
 export default function SEO({
     title,
     description = "Web開発者Kirishimaのポートフォリオサイトです。制作実績やブログを掲載しています。",
-    image = "/favicon.png",
+    image = "/og-default.svg",
     url
 }: SEOProps) {
     const siteTitle = "Kirishima's Portfolio";
     const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
-    const currentUrl = url || typeof window !== 'undefined' ? window.location.href : '';
+    const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
+    const normalizedSiteUrl = siteUrl?.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
+    const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : normalizedSiteUrl || '');
+    const buildAbsoluteUrl = (value?: string) => {
+        if (!value) return undefined;
+        if (value.startsWith('http://') || value.startsWith('https://')) return value;
+        if (!normalizedSiteUrl) return value;
+        const normalizedPath = value.startsWith('/') ? value : `/${value}`;
+        return `${normalizedSiteUrl}${normalizedPath}`;
+    };
+    const ogImage = buildAbsoluteUrl(image);
 
     return (
         <Helmet>
@@ -24,16 +34,17 @@ export default function SEO({
 
             <meta property="og:title" content={fullTitle} />
             <meta property="og:description" content={description} />
-            <meta property="og:image" content={image} />
-            <meta property="og:url" content={currentUrl} />
+            {ogImage && <meta property="og:image" content={ogImage} />}
+            {currentUrl && <meta property="og:url" content={currentUrl} />}
+            <meta property="og:site_name" content={siteTitle} />
             <meta property="og:type" content="website" />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={fullTitle} />
             <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={image} />
+            {ogImage && <meta name="twitter:image" content={ogImage} />}
 
-            <link rel="canonical" href={currentUrl} />
+            {currentUrl && <link rel="canonical" href={currentUrl} />}
         </Helmet>
     );
 }

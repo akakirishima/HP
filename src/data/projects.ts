@@ -12,6 +12,7 @@ export type Project = {
     liveUrl?: string; // URL for iframe embed
     repoUrl?: string;
     year: string;
+    image?: string;
 };
 
 export const projects: Project[] = [
@@ -43,7 +44,8 @@ Beyond solo use, the sharing feature enables "collaborative self-analysis" where
         tags: ['React', 'TypeScript', 'Supabase'],
         color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         liveUrl: 'https://v0-self-analysis-tool.vercel.app',
-        year: '2026'
+        year: '2026',
+        image: '/og/project-deepself-tree.svg'
     },
     {
         id: 'portfolio-site',
@@ -70,7 +72,8 @@ Features include Japanese/English switching, gradient-based UI, and background a
         ],
         tags: ['React', 'Vite', 'Three.js', 'i18n'],
         color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-        year: '2026'
+        year: '2026',
+        image: '/og/project-portfolio-site.svg'
     },
     {
         id: 'task-manager-pro',
@@ -95,7 +98,8 @@ Features include Kanban-style drag & drop, real-time sync, deadline notification
         ],
         tags: ['Next.js', 'Firebase', 'Tailwind'],
         color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-        year: '2025'
+        year: '2025',
+        image: '/og/project-task-manager-pro.svg'
     },
     {
         id: 'ecommerce-platform',
@@ -120,7 +124,8 @@ Features Stripe payment integration, product management, order history, and sale
         ],
         tags: ['Vue.js', 'Node.js', 'PostgreSQL'],
         color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-        year: '2024'
+        year: '2024',
+        image: '/og/project-ecommerce-platform.svg'
     },
     {
         id: 'ai-chat-assistant',
@@ -145,7 +150,8 @@ Maintains conversation history for context-aware natural dialogue. Also features
         ],
         tags: ['Python', 'OpenAI', 'React'],
         color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-        year: '2025'
+        year: '2025',
+        image: '/og/project-ai-chat-assistant.svg'
     },
     {
         id: 'design-system',
@@ -170,7 +176,8 @@ Components are documented with Storybook, and Figma integration streamlines coll
         ],
         tags: ['Storybook', 'Figma', 'TypeScript'],
         color: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-        year: '2024'
+        year: '2024',
+        image: '/og/project-design-system.svg'
     },
 ];
 

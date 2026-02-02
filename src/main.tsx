@@ -10,7 +10,7 @@ import './index.css'
 import { LanguageProvider } from './contexts/LanguageContext'
 
 // Google Analytics Initialization
-const GA_MEASUREMENT_ID = 'G-67X6VEGT3M';
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_ID as string | undefined;
 if (GA_MEASUREMENT_ID) {
   ReactGA.initialize(GA_MEASUREMENT_ID);
 }

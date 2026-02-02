@@ -2,15 +2,18 @@
 import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from "../../contexts/LanguageContext";
 import { getProjectById } from "../../data/projects";
+import SEO from '../../components/SEO';
 
 export default function ProjectDetailPage() {
     const { language } = useLanguage();
     const { id } = useParams<{ id: string }>(); // Get project ID from URL parameter
     const project = getProjectById(id || '');
+    const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
+    const normalized = siteUrl?.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
 
     if (!project) {
         return (
-            <main className="section" style={{ maxWidth: '800px', margin: '0 auto', padding: '4rem 1.5rem' }}>
+            <main className="section page page--tight" style={{ padding: '4rem 1.5rem' }}>
                 <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
                     {language === 'ja' ? 'プロジェクトが見つかりません' : 'Project Not Found'}
                 </h1>
@@ -21,8 +24,13 @@ export default function ProjectDetailPage() {
         );
     }
 
+    const title = project.title;
+    const description = language === 'ja' ? project.desc_ja : project.desc_en;
+    const canonical = normalized ? `${normalized}/projects/${project.id}` : undefined;
+
     return (
-        <main style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem 1.5rem 6rem' }}>
+        <main className="page page--detail">
+            <SEO title={title} description={description} url={canonical} image={project.image} />
             {/* Back Button */}
             <Link
                 to="/portfolio"

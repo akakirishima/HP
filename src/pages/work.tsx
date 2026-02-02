@@ -40,7 +40,7 @@ export default function WorkPage() {
   const { t, language } = useLanguage();
 
   return (
-    <main className="section" style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem 6rem' }}>
+    <main className="section page page--medium">
       <h1 className="section-title animate-fade-in-up">
         {t('work_title')}
       </h1>

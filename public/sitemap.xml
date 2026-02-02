@@ -6,14 +6,9 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/about</loc>
+    <loc>https://hp-six-beryl.vercel.app/work</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/projects</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://hp-six-beryl.vercel.app/blog</loc>
@@ -21,8 +16,58 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://hp-six-beryl.vercel.app/portfolio</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://hp-six-beryl.vercel.app/contact</loc>
     <priority>0.5</priority>
     <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/deepself-tree</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/portfolio-site</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/task-manager-pro</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/ecommerce-platform</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/ai-chat-assistant</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/design-system</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/designing-for-ai</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/performance-first-portfolio</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/design-system-consistency</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
   </url>
 </urlset>

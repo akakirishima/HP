@@ -7,7 +7,7 @@ export default function PortfolioPage() {
   const { t, language } = useLanguage();
 
   return (
-    <main className="section" style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem 6rem' }}>
+    <main className="section page page--wide">
       <h1 className="section-title animate-fade-in-up">
         {t('portfolio_title')}
       </h1>

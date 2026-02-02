@@ -41,7 +41,7 @@ export const translations: Record<Language, Record<TranslationKeys, string>> = {
         portfolio_desc: '制作したWebサイトやアプリケーションのギャラリー。',
         contact_title: 'お問い合わせ',
         contact_desc: 'お仕事のご依頼やご相談はこちらからお気軽にどうぞ。',
-        footer_copyright: '© 2026 My Portfolio. All Rights Reserved.',
+        footer_copyright: '© {year} My Portfolio. All Rights Reserved.',
     },
     en: {
         site_title: 'My Portfolio',
@@ -62,6 +62,6 @@ export const translations: Record<Language, Record<TranslationKeys, string>> = {
         portfolio_desc: 'A gallery of websites and applications I have created.',
         contact_title: 'Contact',
         contact_desc: 'Feel free to reach out for inquiries or collaborations.',
-        footer_copyright: '© 2026 My Portfolio. All Rights Reserved.',
+        footer_copyright: '© {year} My Portfolio. All Rights Reserved.',
     }
 };

@@ -59,6 +59,15 @@ a:hover {
   color: var(--c-primary);
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+}
+
 /* =============================================
    ANIMATIONS
    ============================================= */
@@ -366,6 +375,92 @@ a:hover {
 }
 
 /* =============================================
+   PAGE SHELL
+   ============================================= */
+
+.page {
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+}
+
+.page--narrow {
+  max-width: 700px;
+}
+
+.page--medium {
+  max-width: 900px;
+}
+
+.page--wide {
+  max-width: 1200px;
+}
+
+.page--detail {
+  max-width: 1000px;
+}
+
+.page--tight {
+  max-width: 800px;
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.hero__accent {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #004098, #4DA7E0, #6366f1);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+.hero__title {
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  white-space: pre-line;
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  margin-bottom: 3rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.08em;
+  color: #666;
+  font-weight: 500;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero__scroll {
+  margin-top: auto;
+  padding-top: 4rem;
+  font-size: 0.75rem;
+  color: #004098;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =============================================
    TIMELINE (for Work page)
    ============================================= */
 
@@ -436,6 +531,42 @@ a:hover {
   gap: 24px;
 }
 
+/* =============================================
+   NEWS
+   ============================================= */
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 2rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-date {
+  font-size: 0.9rem;
+  color: #004098;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  min-width: 100px;
+}
+
+.news-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
 .project-card {
   background: white !important;
   border-radius: 20px;
@@ -494,6 +625,96 @@ a:hover {
 }
 
 /* =============================================
+   BLOG
+   ============================================= */
+
+.blog-list {
+  display: grid;
+  gap: 24px;
+}
+
+.blog-card {
+  display: block;
+  padding: 24px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  color: inherit;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.blog-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.blog-date {
+  font-size: 0.85rem;
+  color: var(--c-primary);
+  font-weight: 600;
+}
+
+.blog-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.blog-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.blog-excerpt {
+  color: var(--c-text-sub);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.blog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--c-primary);
+  font-weight: 600;
+}
+
+.blog-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--c-primary);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.blog-detail {
+  background: white;
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.blog-content {
+  line-height: 1.9;
+  color: var(--c-text-sub);
+}
+
+.blog-content p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* =============================================
    FORM STYLES (for Contact)
    ============================================= */
 
@@ -530,6 +751,31 @@ a:hover {
 .form-textarea {
   min-height: 150px;
   resize: vertical;
+}
+
+.form-status {
+  font-size: 0.95rem;
+  color: var(--c-text-sub);
+}
+
+.form-status[data-status='success'] {
+  color: #15803d;
+}
+
+.form-status[data-status='error'],
+.form-status[data-status='config-error'] {
+  color: #b91c1c;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 /* =============================================
@@ -575,6 +821,20 @@ a:hover {
 
   .timeline-item::before {
     left: -30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-bounce {
+    animation: none !important;
   }
 }
 

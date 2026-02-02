@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-
-type NavLink = { href: string; labelKey: string };
+import { navRoutes } from '../data/routes';
 
 type HeaderProps = {
   title?: string;
@@ -15,13 +14,27 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
-  const links: NavLink[] = [
-    { href: '/', labelKey: 'nav_home' },
-    { href: '/work', labelKey: 'nav_work' },
-    { href: '/blog', labelKey: 'nav_blog' },
-    { href: '/portfolio', labelKey: 'nav_portfolio' },
-    { href: '/contact', labelKey: 'nav_contact' },
-  ];
+  const links = navRoutes;
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileMenuOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   // Auto-close mobile menu on navigation
   const handleLinkClick = () => {
@@ -57,11 +70,12 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
             {/* Desktop Navigation */}
             <nav className="nav nav--desktop" aria-label="Main navigation">
               {links.map((l) => {
-                const isActive = activeHref === l.href || (l.href !== '/' && activeHref?.startsWith(l.href));
+                const isActive = activeHref === l.path || (l.path !== '/' && activeHref?.startsWith(l.path));
                 return (
                   <Link
-                    key={l.href}
-                    to={l.href}
+                    key={l.path}
+                    to={l.path}
+                    aria-current={isActive ? 'page' : undefined}
                     style={{
                       marginRight: 24,
                       color: isActive ? '#004098' : '#333',
@@ -74,8 +88,7 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
                     onMouseEnter={(e) => e.currentTarget.style.color = '#004098'}
                     onMouseLeave={(e) => e.currentTarget.style.color = isActive ? '#004098' : '#333'}
                   >
-                    {/* @ts-expect-error - key type safety handled by context */}
-                    {t(l.labelKey)}
+                    {t(l.navLabelKey)}
                   </Link>
                 );
               })}
@@ -115,6 +128,7 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
                 aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <span></span>
                 <span></span>
@@ -131,18 +145,19 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
       <nav
         className={`nav nav--mobile ${mobileMenuOpen ? 'open' : ''}`}
         aria-label="Mobile navigation"
+        id="mobile-menu"
       >
         {links.map((l) => {
-          const isActive = activeHref === l.href || (l.href !== '/' && activeHref?.startsWith(l.href));
+          const isActive = activeHref === l.path || (l.path !== '/' && activeHref?.startsWith(l.path));
           return (
             <Link
-              key={l.href}
-              to={l.href}
+              key={l.path}
+              to={l.path}
               className={isActive ? 'active' : ''}
+              aria-current={isActive ? 'page' : undefined}
               onClick={handleLinkClick}
             >
-              {/* @ts-expect-error - key type safety */}
-              {t(l.labelKey)}
+              {t(l.navLabelKey)}
             </Link>
           );
         })}

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from "../contexts/LanguageContext";
+import { newsItems } from '../data/news';
 
 export default function HomePage() {
   const { t, language } = useLanguage();
@@ -7,39 +8,15 @@ export default function HomePage() {
   return (
     <div className="page-home">
       {/* Hero Section */}
-      <section
-        className="hero"
-        style={{
-          minHeight: '85vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          maxWidth: '1000px',
-          margin: '0 auto',
-          padding: '0 1.5rem'
-        }}
-      >
+      <section className="hero">
         {/* Accent bar */}
-        <div
-          className="animate-fade-in-up"
-          style={{
-            width: '80px',
-            height: '4px',
-            background: 'linear-gradient(90deg, #004098, #4DA7E0, #6366f1)',
-            borderRadius: '2px',
-            marginBottom: '2rem'
-          }}
-        />
+        <div className="hero__accent animate-fade-in-up" />
 
         {/* Main Title with Gradient */}
         <h1
           className="hero__title gradient-text animate-fade-in-up animate-delay-1"
           style={{
             fontSize: language === 'ja' ? 'clamp(2.5rem, 8vw, 5rem)' : 'clamp(2rem, 7vw, 4.5rem)',
-            fontWeight: 800,
-            lineHeight: 1.15,
-            marginBottom: '1.5rem',
-            whiteSpace: 'pre-line',
             letterSpacing: language === 'ja' ? '0.02em' : '-0.03em',
           }}
         >
@@ -47,22 +24,12 @@ export default function HomePage() {
         </h1>
 
         {/* Subtitle */}
-        <p
-          className="hero__subtitle animate-fade-in-up animate-delay-2"
-          style={{
-            fontSize: 'clamp(1rem, 2vw, 1.35rem)',
-            marginBottom: '3rem',
-            fontFamily: "'Inter', sans-serif",
-            letterSpacing: '0.08em',
-            color: '#666',
-            fontWeight: 500
-          }}
-        >
+        <p className="hero__subtitle animate-fade-in-up animate-delay-2">
           {t('hero_subtitle')}
         </p>
 
         {/* CTA Button */}
-        <div className="animate-fade-in-up animate-delay-3" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+        <div className="hero__cta animate-fade-in-up animate-delay-3">
           <Link to="/portfolio" className="btn btn-primary">
             {language === 'ja' ? '作品を見る' : 'View Portfolio'}
           </Link>
@@ -72,21 +39,7 @@ export default function HomePage() {
         </div>
 
         {/* Scroll Indicator */}
-        <div
-          className="hero__scroll animate-bounce"
-          style={{
-            marginTop: 'auto',
-            paddingTop: '4rem',
-            fontSize: '0.75rem',
-            color: '#004098',
-            letterSpacing: '0.2em',
-            fontWeight: 600,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '8px'
-          }}
-        >
+        <div className="hero__scroll animate-bounce">
           <span>SCROLL</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 5v14M19 12l-7 7-7-7" />
@@ -95,36 +48,24 @@ export default function HomePage() {
       </section>
 
       {/* News / Topics Section */}
-      <section className="section" style={{ maxWidth: '1000px', margin: '0 auto', padding: '4rem 1.5rem' }}>
+      <section className="section page page--detail" style={{ padding: '4rem 1.5rem' }}>
         <h2 className="section-title">
           {language === 'ja' ? '最新情報' : 'Latest News'}
         </h2>
 
         <div className="glass-card" style={{ padding: '2rem', marginTop: '2rem' }}>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            {[
-              { date: '2026.01.10', text: language === 'ja' ? 'ウェブサイトをリニューアルしました' : 'Website has been renewed' },
-              { date: '2026.01.08', text: language === 'ja' ? '新しいプロジェクトを公開しました' : 'New project released' },
-              { date: '2026.01.05', text: language === 'ja' ? 'ポートフォリオを更新しました' : 'Portfolio updated' },
-            ].map((item, i) => (
+          <ul className="news-list">
+            {newsItems.map((item, i) => (
               <li
-                key={i}
-                className="animate-fade-in-up"
-                style={{
-                  padding: '1.25rem 0',
-                  borderBottom: i < 2 ? '1px solid rgba(0,0,0,0.08)' : 'none',
-                  display: 'flex',
-                  gap: '2rem',
-                  alignItems: 'baseline',
-                  flexWrap: 'wrap',
-                  animationDelay: `${0.1 * i}s`
-                }}
+                key={item.date}
+                className="news-item animate-fade-in-up"
+                style={{ animationDelay: `${0.1 * i}s` }}
               >
-                <span style={{ fontSize: '0.9rem', color: '#004098', fontWeight: 600, fontFamily: 'Inter', minWidth: '100px' }}>
+                <span className="news-date">
                   {item.date}
                 </span>
-                <span style={{ fontSize: '1rem', fontWeight: 500 }}>
-                  {item.text}
+                <span className="news-text">
+                  {language === 'ja' ? item.text_ja : item.text_en}
                 </span>
               </li>
             ))}
@@ -133,7 +74,7 @@ export default function HomePage() {
       </section>
 
       {/* Skills Section (NEW) */}
-      <section className="section" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 1.5rem 6rem' }}>
+      <section className="section page page--detail" style={{ padding: '0 1.5rem 6rem' }}>
         <h2 className="section-title">
           {language === 'ja' ? 'スキル' : 'Skills'}
         </h2>

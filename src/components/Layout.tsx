@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import AnimatedBackground from './canvas/AnimatedBackground';
 import PageEffects from './PageEffects';
 
 type LayoutProps = {
@@ -15,7 +14,6 @@ type LayoutProps = {
 export default function Layout({ children, title = 'My App', activeHref, route }: LayoutProps) {
   return (
     <div className="layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-      <AnimatedBackground />
       <PageEffects route={route} />
       <div className="content-layer" style={{ position: 'relative', zIndex: 1, display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
         <Header title={title} activeHref={activeHref} />

@@ -551,6 +551,28 @@ select:focus-visible {
   margin-bottom: 1.5rem;
 }
 
+.profile-expanded {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  opacity: 0;
+}
+
+.profile-expanded.open {
+  max-height: 500px;
+  /* Adjust as needed */
+  opacity: 1;
+  margin-top: 1.5rem;
+  transition: max-height 0.5s ease-in, opacity 0.3s ease-in 0.1s;
+}
+
+.profile-detail-text {
+  color: var(--c-text-sub);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
 /* =============================================
    TIMELINE (for Work page)
    ============================================= */

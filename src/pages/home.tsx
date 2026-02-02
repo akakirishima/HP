@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from "../contexts/LanguageContext";
 import { newsItems } from '../data/news';
 
 export default function HomePage() {
   const { t, language } = useLanguage();
+  const [isProfileExpanded, setIsProfileExpanded] = useState(false);
 
   return (
     <div className="page-home">
@@ -65,9 +67,28 @@ export default function HomePage() {
                 ? '東京を拠点に活動するWebデベロッパーです。使いやすさと美しさを兼ね備えたデジタルプロダクトを作ることに情熱を注いでいます。'
                 : 'A Web Developer based in Tokyo. Passionate about creating digital products that combine usability and aesthetics.'}
             </p>
-            <Link to="/about" className="btn btn-outline" style={{ padding: '8px 24px', fontSize: '0.9rem' }}>
-              {language === 'ja' ? 'もっと詳しく' : 'More About Me'}
-            </Link>
+
+            <button
+              className="btn btn-outline"
+              onClick={() => setIsProfileExpanded(!isProfileExpanded)}
+              style={{ padding: '8px 24px', fontSize: '0.9rem' }}
+            >
+              {isProfileExpanded
+                ? (language === 'ja' ? '閉じる' : 'Close')
+                : (language === 'ja' ? 'もっと詳しく' : 'More About Me')
+              }
+            </button>
+
+            <div className={`profile-expanded ${isProfileExpanded ? 'open' : ''}`}>
+              <p className="profile-detail-text">
+                {language === 'ja'
+                  ? '大学での研究を通じてデータ分析と可視化に興味を持ち、Web開発の世界に入りました。フロントエンド技術を中心に、ユーザー体験を最大化するインターフェース設計を得意としています。'
+                  : 'I became interested in data analysis and visualization through my university research, which led me into the world of web development. Specializing in frontend technologies, I excel at designing interfaces that maximize user experience.'}
+              </p>
+              <Link to="/work" className="btn btn-primary" style={{ padding: '8px 24px', fontSize: '0.9rem' }}>
+                {language === 'ja' ? '経歴を見る' : 'View Full Resume'}
+              </Link>
+            </div>
           </div>
         </div>
       </section>

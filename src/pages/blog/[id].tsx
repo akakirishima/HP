@@ -4,7 +4,7 @@ import { getPostById } from '../../data/posts';
 import SEO from '../../components/SEO';
 
 export default function BlogDetailPage() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const { id } = useParams<{ id: string }>();
   const post = getPostById(id || '');
 
@@ -12,10 +12,10 @@ export default function BlogDetailPage() {
     return (
       <main className="section page page--tight" style={{ padding: '4rem 1.5rem' }}>
         <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-          {language === 'ja' ? '記事が見つかりません' : 'Post Not Found'}
+          {t('blog_not_found_title')}
         </h1>
         <Link to="/blog" className="btn btn-outline">
-          {language === 'ja' ? '← ブログ一覧へ' : '← Back to Blog'}
+          {t('blog_back')}
         </Link>
       </main>
     );
@@ -31,7 +31,7 @@ export default function BlogDetailPage() {
     <main className="section page page--medium">
       <SEO title={title} description={description} url={canonical} image={post.image} />
       <Link to="/blog" className="blog-back">
-        {language === 'ja' ? '← ブログ一覧へ' : '← Back to Blog'}
+        {t('blog_back')}
       </Link>
 
       <div className="blog-detail">

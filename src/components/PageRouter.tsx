@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Layout from './Layout';
 import SEO from './SEO';
 import { routes } from '../data/routes';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const siteUrl = import.meta.env.VITE_SITE_URL;
 
@@ -14,17 +15,18 @@ const buildUrl = (path: string) => {
 
 export default function PageRouter() {
   const location = useLocation();
+  const { t } = useLanguage();
 
   return (
     <Layout title="My App" activeHref={location.pathname} route={location.pathname}>
       <Routes>
-        {routes.map(({ path, title, Component, seoImage }) => (
+        {routes.map(({ path, title, titleKey, Component, seoImage }) => (
           <Route
             key={path}
             path={path}
             element={
-              <Suspense fallback={<div className="page page--medium">Loading...</div>}>
-                {!path.includes(':') && <SEO title={title} url={buildUrl(path)} image={seoImage} />}
+              <Suspense fallback={<div className="page page--medium">{t('loading')}</div>}>
+                {!path.includes(':') && <SEO title={titleKey ? t(titleKey) : title} url={buildUrl(path)} image={seoImage} />}
                 <Component />
               </Suspense>
             }

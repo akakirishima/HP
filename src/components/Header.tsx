@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import { navRoutes } from '../data/routes';
@@ -12,6 +12,7 @@ type HeaderProps = {
 
 export default function Header({ left, right, activeHref }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const previousBodyOverflowRef = useRef<string | null>(null);
   const { language, setLanguage, t } = useLanguage();
 
   const links = navRoutes;
@@ -19,7 +20,10 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
   useEffect(() => {
     if (typeof document === 'undefined') return;
     if (!mobileMenuOpen) {
-      document.body.style.overflow = '';
+      if (previousBodyOverflowRef.current !== null) {
+        document.body.style.overflow = previousBodyOverflowRef.current;
+        previousBodyOverflowRef.current = null;
+      }
       return;
     }
 
@@ -27,11 +31,17 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
       if (event.key === 'Escape') setMobileMenuOpen(false);
     };
 
+    previousBodyOverflowRef.current = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = '';
+      if (previousBodyOverflowRef.current !== null) {
+        document.body.style.overflow = previousBodyOverflowRef.current;
+        previousBodyOverflowRef.current = null;
+      } else {
+        document.body.style.overflow = '';
+      }
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [mobileMenuOpen]);
@@ -126,7 +136,7 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
               <button
                 className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle menu"
+                aria-label={t('nav_toggle')}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-menu"
               >
@@ -173,7 +183,7 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
             fontSize: '1.2rem'
           }}
         >
-          Switch to {language === 'ja' ? 'English' : '日本語'}
+          {language === 'ja' ? t('nav_switch_to_en') : t('nav_switch_to_ja')}
         </button>
       </nav>
     </>

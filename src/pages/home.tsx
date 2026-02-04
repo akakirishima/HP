@@ -22,7 +22,7 @@ export default function HomePage() {
             letterSpacing: language === 'ja' ? '0.02em' : '-0.03em',
           }}
         >
-          {t(language === 'ja' ? 'hero_title_ja' : 'hero_title_en')}
+          {t('hero_title')}
         </h1>
 
         {/* Subtitle */}
@@ -33,16 +33,16 @@ export default function HomePage() {
         {/* CTA Button */}
         <div className="hero__cta animate-fade-in-up animate-delay-3">
           <Link to="/portfolio" className="btn btn-primary">
-            {language === 'ja' ? '作品を見る' : 'View Portfolio'}
+            {t('home_cta_portfolio')}
           </Link>
           <Link to="/contact" className="btn btn-outline">
-            {language === 'ja' ? 'お問い合わせ' : 'Contact Me'}
+            {t('home_cta_contact')}
           </Link>
         </div>
 
         {/* Scroll Indicator */}
         <div className="hero__scroll animate-bounce">
-          <span>SCROLL</span>
+          <span>{t('hero_scroll')}</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 5v14M19 12l-7 7-7-7" />
           </svg>
@@ -53,19 +53,17 @@ export default function HomePage() {
       <section className="section-profile">
         <div className="profile-container animate-fade-in-up">
           <div className="profile-image-wrapper">
-            <img src="/profile.svg" alt="Profile" className="profile-image" />
+            <img src="/profile.svg" alt={t('profile_image_alt')} className="profile-image" />
           </div>
           <div className="profile-content">
             <h2 className="profile-name">
-              {language === 'ja' ? '霧島' : 'Kirishima'}
+              {t('profile_name')}
             </h2>
             <p className="profile-role">
-              Web Developer / UI Designer
+              {t('profile_role')}
             </p>
             <p className="profile-bio">
-              {language === 'ja'
-                ? '東京を拠点に活動するWebデベロッパーです。使いやすさと美しさを兼ね備えたデジタルプロダクトを作ることに情熱を注いでいます。'
-                : 'A Web Developer based in Tokyo. Passionate about creating digital products that combine usability and aesthetics.'}
+              {t('profile_bio')}
             </p>
 
             <button
@@ -73,20 +71,15 @@ export default function HomePage() {
               onClick={() => setIsProfileExpanded(!isProfileExpanded)}
               style={{ padding: '8px 24px', fontSize: '0.9rem' }}
             >
-              {isProfileExpanded
-                ? (language === 'ja' ? '閉じる' : 'Close')
-                : (language === 'ja' ? 'もっと詳しく' : 'More About Me')
-              }
+              {isProfileExpanded ? t('profile_collapse') : t('profile_expand')}
             </button>
 
             <div className={`profile-expanded ${isProfileExpanded ? 'open' : ''}`}>
               <p className="profile-detail-text">
-                {language === 'ja'
-                  ? '大学での研究を通じてデータ分析と可視化に興味を持ち、Web開発の世界に入りました。フロントエンド技術を中心に、ユーザー体験を最大化するインターフェース設計を得意としています。'
-                  : 'I became interested in data analysis and visualization through my university research, which led me into the world of web development. Specializing in frontend technologies, I excel at designing interfaces that maximize user experience.'}
+                {t('profile_detail')}
               </p>
               <Link to="/work" className="btn btn-primary" style={{ padding: '8px 24px', fontSize: '0.9rem' }}>
-                {language === 'ja' ? '経歴を見る' : 'View Full Resume'}
+                {t('profile_view_resume')}
               </Link>
             </div>
           </div>
@@ -96,7 +89,7 @@ export default function HomePage() {
       {/* News / Topics Section */}
       <section className="section page page--detail" style={{ padding: '4rem 1.5rem' }}>
         <h2 className="section-title">
-          {language === 'ja' ? '最新情報' : 'Latest News'}
+          {t('home_news_title')}
         </h2>
 
         <div className="glass-card" style={{ padding: '2rem', marginTop: '2rem' }}>
@@ -122,15 +115,15 @@ export default function HomePage() {
       {/* Skills Section (NEW) */}
       <section className="section page page--detail" style={{ padding: '0 1.5rem 6rem' }}>
         <h2 className="section-title">
-          {language === 'ja' ? 'スキル' : 'Skills'}
+          {t('home_skills_title')}
         </h2>
 
         <div className="skills-grid">
           {[
-            { title: 'Frontend', items: ['React', 'TypeScript', 'Next.js', 'Vue.js'] },
-            { title: 'Backend', items: ['Node.js', 'Python', 'PostgreSQL', 'Firebase'] },
-            { title: 'Design', items: ['Figma', 'UI/UX', 'Prototyping', 'Design Systems'] },
-            { title: 'Tools', items: ['Git', 'Docker', 'AWS', 'CI/CD'] },
+            { title: t('skill_frontend'), items: ['React', 'TypeScript', 'Next.js', 'Vue.js'] },
+            { title: t('skill_backend'), items: ['Node.js', 'Python', 'PostgreSQL', 'Firebase'] },
+            { title: t('skill_design'), items: ['Figma', 'UI/UX', 'Prototyping', 'Design Systems'] },
+            { title: t('skill_tools'), items: ['Git', 'Docker', 'AWS', 'CI/CD'] },
           ].map((skill, i) => (
             <div
               key={skill.title}

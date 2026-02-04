@@ -192,6 +192,221 @@ select:focus-visible {
 }
 
 /* =============================================
+   CATEGORY CHIPS
+   ============================================= */
+
+.category-chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  margin-bottom: 2.5rem;
+  align-items: center;
+}
+
+.chip-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.chip {
+  appearance: none;
+  border: 2.5px solid rgba(0, 0, 0, 0.15);
+  background: white;
+  color: var(--c-text-main);
+  padding: 6px 20px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 64, 152, 0.1);
+}
+
+.chip--active {
+  border-color: var(--c-primary);
+  border-width: 2.5px;
+  color: var(--c-primary);
+  background: white;
+  font-weight: 600;
+}
+
+.chip--sub {
+  padding: 5px 16px;
+  font-size: 0.8125rem;
+  border-width: 2px;
+}
+
+.chip-group {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.chip-group__children {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.chip-group__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip--ghost {
+  border-color: rgba(0, 0, 0, 0.12);
+  color: var(--c-text-sub);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.chip--ghost:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  background: rgba(0, 64, 152, 0.06);
+}
+
+.timeline-empty {
+  padding: 1.5rem 1.75rem;
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  color: var(--c-text-sub);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.timeline-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.timeline-item--link {
+  cursor: pointer;
+}
+
+.timeline-item--link:hover .timeline-title {
+  color: var(--c-primary);
+}
+
+/* =============================================
+   CLUB BUBBLE LAYOUT (部活セクション専用)
+   ============================================= */
+
+.club-bubble-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* 吹き出しグループ */
+.club-bubble {
+  border: 2px solid var(--c-text-main);
+  border-radius: 60px;
+  background: white;
+  padding: 20px 36px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.club-bubble--parent {
+  padding: 16px 32px;
+  border-radius: 50px;
+}
+
+.club-bubble--children {
+  padding: 20px 40px;
+  border-radius: 80px;
+  gap: 24px;
+}
+
+/* ノード（楕円形ボタン） */
+.club-node {
+  appearance: none;
+  border: 2px solid var(--c-primary);
+  border-radius: 50%;
+  background: white;
+  color: var(--c-text-main);
+  padding: 12px 32px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-block;
+  min-width: 120px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 64, 152, 0.08);
+}
+
+.club-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 64, 152, 0.15);
+  border-color: var(--c-primary-light);
+}
+
+.club-node--parent {
+  min-width: 100px;
+  padding: 10px 28px;
+  font-weight: 600;
+}
+
+.club-node--child {
+  min-width: 140px;
+}
+
+/* アクティブ状態 */
+.club-node--active {
+  background: var(--c-primary);
+  color: white;
+  border-color: var(--c-primary);
+  box-shadow: 0 4px 16px rgba(0, 64, 152, 0.25);
+}
+
+.club-node--active:hover {
+  background: var(--c-primary-light);
+  border-color: var(--c-primary-light);
+}
+
+/* 接続線 */
+.club-bubble__connector {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--c-text-main), rgba(0, 0, 0, 0.3));
+  position: relative;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .club-bubble--children {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 28px;
+  }
+
+  .club-node {
+    min-width: 140px;
+    padding: 10px 24px;
+  }
+}
+
+
+/* =============================================
    GRADIENT TEXT
    ============================================= */
 

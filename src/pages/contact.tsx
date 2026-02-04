@@ -68,7 +68,7 @@ export default function ContactPage() {
 
       <form onSubmit={handleSubmit} className="glass-card animate-fade-in-up animate-delay-2" style={{ padding: '2.5rem' }}>
         <div className="visually-hidden" aria-hidden="true">
-          <label htmlFor="company">Company</label>
+          <label htmlFor="company">{t('contact_company_label')}</label>
           <input
             id="company"
             name="company"
@@ -81,7 +81,7 @@ export default function ContactPage() {
         </div>
         <div className="form-group">
           <label htmlFor="name" className="form-label">
-            {language === 'ja' ? 'お名前' : 'Name'}
+            {t('contact_label_name')}
           </label>
           <input
             type="text"
@@ -90,14 +90,14 @@ export default function ContactPage() {
             className="form-input"
             value={formData.name}
             onChange={handleChange}
-            placeholder={language === 'ja' ? '山田 太郎' : 'John Doe'}
+            placeholder={t('contact_placeholder_name')}
             required
           />
         </div>
 
         <div className="form-group">
           <label htmlFor="email" className="form-label">
-            {language === 'ja' ? 'メールアドレス' : 'Email'}
+            {t('contact_label_email')}
           </label>
           <input
             type="email"
@@ -113,7 +113,7 @@ export default function ContactPage() {
 
         <div className="form-group">
           <label htmlFor="message" className="form-label">
-            {language === 'ja' ? 'メッセージ' : 'Message'}
+            {t('contact_label_message')}
           </label>
           <textarea
             id="message"
@@ -121,7 +121,7 @@ export default function ContactPage() {
             className="form-textarea"
             value={formData.message}
             onChange={handleChange}
-            placeholder={language === 'ja' ? 'お問い合わせ内容をご記入ください...' : 'Write your message here...'}
+            placeholder={t('contact_placeholder_message')}
             required
           />
         </div>
@@ -133,8 +133,8 @@ export default function ContactPage() {
           disabled={status === 'sending'}
         >
           {status === 'sending'
-            ? (language === 'ja' ? '送信中...' : 'Sending...')
-            : (language === 'ja' ? '送信する' : 'Send Message')}
+            ? t('contact_sending')
+            : t('contact_send')}
         </button>
 
         {status !== 'idle' && (
@@ -145,10 +145,10 @@ export default function ContactPage() {
             aria-live="polite"
             style={{ marginTop: '1rem' }}
           >
-            {status === 'success' && (language === 'ja' ? '送信が完了しました。' : 'Message sent successfully.')}
-            {status === 'error' && (language === 'ja' ? '送信に失敗しました。時間をおいて再試行してください。' : 'Failed to send. Please try again later.')}
-            {status === 'config-error' && (language === 'ja' ? '送信先が未設定です。' : 'Contact endpoint is not configured.')}
-            {status === 'sending' && (language === 'ja' ? '送信中です...' : 'Sending...')}
+            {status === 'success' && t('contact_status_success')}
+            {status === 'error' && t('contact_status_error')}
+            {status === 'config-error' && t('contact_status_config_error')}
+            {status === 'sending' && t('contact_sending')}
           </p>
         )}
       </form>
@@ -156,7 +156,7 @@ export default function ContactPage() {
       {/* Contact Info */}
       <div className="animate-fade-in-up animate-delay-3" style={{ marginTop: '3rem', textAlign: 'center' }}>
         <p style={{ color: '#666', fontSize: '0.95rem' }}>
-          {language === 'ja' ? 'または直接メールでも受け付けています：' : 'Or reach out directly via email:'}
+          {t('contact_direct_email')}
         </p>
         <a
           href={`mailto:${CONTACT_EMAIL ?? 'hello@example.com'}`}

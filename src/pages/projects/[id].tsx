@@ -5,7 +5,7 @@ import { getProjectById } from "../../data/projects";
 import SEO from '../../components/SEO';
 
 export default function ProjectDetailPage() {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const { id } = useParams<{ id: string }>(); // Get project ID from URL parameter
     const project = getProjectById(id || '');
     const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
@@ -15,10 +15,10 @@ export default function ProjectDetailPage() {
         return (
             <main className="section page page--tight" style={{ padding: '4rem 1.5rem' }}>
                 <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-                    {language === 'ja' ? 'プロジェクトが見つかりません' : 'Project Not Found'}
+                    {t('project_not_found_title')}
                 </h1>
                 <Link to="/portfolio" className="btn btn-outline">
-                    {language === 'ja' ? '← 作品集に戻る' : '← Back to Portfolio'}
+                    {t('project_back')}
                 </Link>
             </main>
         );
@@ -47,7 +47,7 @@ export default function ProjectDetailPage() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
-                {language === 'ja' ? '作品集に戻る' : 'Back to Portfolio'}
+                {t('project_back')}
             </Link>
 
             {/* Header */}
@@ -83,7 +83,7 @@ export default function ProjectDetailPage() {
                 <section className="animate-fade-in-up animate-delay-1" style={{ marginBottom: '3rem' }}>
                     <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <span style={{ width: '8px', height: '8px', background: '#22c55e', borderRadius: '50%', animation: 'pulse 2s infinite' }}></span>
-                        {language === 'ja' ? 'ライブプレビュー' : 'Live Preview'}
+                        {t('project_live_preview')}
                     </h2>
                     <div
                         className="glass-card"
@@ -131,7 +131,7 @@ export default function ProjectDetailPage() {
                                     fontWeight: 600
                                 }}
                             >
-                                {language === 'ja' ? '新しいタブで開く' : 'Open in New Tab'}
+                                {t('project_open_new_tab')}
                             </a>
                         </div>
                         {/* Iframe */}
@@ -143,7 +143,7 @@ export default function ProjectDetailPage() {
                                 border: 'none',
                                 display: 'block'
                             }}
-                            title={`${project.title} Live Preview`}
+                            title={`${project.title} ${t('project_live_preview')}`}
                             loading="lazy"
                         />
                     </div>
@@ -153,7 +153,7 @@ export default function ProjectDetailPage() {
             {/* About */}
             <section className="animate-fade-in-up animate-delay-2" style={{ marginBottom: '3rem' }}>
                 <h2 className="section-title">
-                    {language === 'ja' ? 'プロジェクトについて' : 'About This Project'}
+                    {t('project_about')}
                 </h2>
                 <div
                     className="card"
@@ -171,7 +171,7 @@ export default function ProjectDetailPage() {
             {/* Challenges */}
             <section className="animate-fade-in-up animate-delay-3">
                 <h2 className="section-title">
-                    {language === 'ja' ? '技術的チャレンジ / 苦労話' : 'Technical Challenges'}
+                    {t('project_challenges')}
                 </h2>
                 <div className="card" style={{ padding: '2rem', marginTop: '1.5rem' }}>
                     <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 2 }}>
@@ -188,7 +188,7 @@ export default function ProjectDetailPage() {
             <div className="animate-fade-in-up" style={{ marginTop: '3rem', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                 {project.liveUrl && (
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                        {language === 'ja' ? 'サイトを見る →' : 'Visit Site →'}
+                        {t('project_visit_site')}
                     </a>
                 )}
                 {project.repoUrl && (

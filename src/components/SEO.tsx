@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useLanguage } from '../contexts/LanguageContext';
 
 type SEOProps = {
     title?: string;
@@ -9,10 +10,16 @@ type SEOProps = {
 
 export default function SEO({
     title,
-    description = "Web開発者Kirishimaのポートフォリオサイトです。制作実績やブログを掲載しています。",
+    description,
     image = "/og-default.svg",
     url
 }: SEOProps) {
+    const { language } = useLanguage();
+    const defaultDescription =
+        language === 'ja'
+            ? "Web開発者Kirishimaのポートフォリオサイトです。制作実績やブログを掲載しています。"
+            : "Kirishima's portfolio site featuring projects and blog posts about web development.";
+    const resolvedDescription = description ?? defaultDescription;
     const siteTitle = "Kirishima's Portfolio";
     const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
     const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
@@ -30,10 +37,10 @@ export default function SEO({
     return (
         <Helmet>
             <title>{fullTitle}</title>
-            <meta name="description" content={description} />
+            <meta name="description" content={resolvedDescription} />
 
             <meta property="og:title" content={fullTitle} />
-            <meta property="og:description" content={description} />
+            <meta property="og:description" content={resolvedDescription} />
             {ogImage && <meta property="og:image" content={ogImage} />}
             {currentUrl && <meta property="og:url" content={currentUrl} />}
             <meta property="og:site_name" content={siteTitle} />
@@ -41,7 +48,7 @@ export default function SEO({
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={fullTitle} />
-            <meta name="twitter:description" content={description} />
+            <meta name="twitter:description" content={resolvedDescription} />
             {ogImage && <meta name="twitter:image" content={ogImage} />}
 
             {currentUrl && <link rel="canonical" href={currentUrl} />}

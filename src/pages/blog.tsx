@@ -38,7 +38,7 @@ export default function BlogPage() {
               {language === 'ja' ? post.excerpt_ja : post.excerpt_en}
             </p>
             <span className="blog-link">
-              {language === 'ja' ? '続きを読む →' : 'Read more →'}
+              {t('blog_read_more')}
             </span>
           </Link>
         ))}

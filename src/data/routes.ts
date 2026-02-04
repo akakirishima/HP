@@ -12,6 +12,7 @@ const ProjectDetailPage = lazy(() => import('../pages/projects/[id]'));
 export type RouteConfig = {
   path: string;
   title: string;
+  titleKey?: TranslationKeys;
   navLabelKey?: TranslationKeys;
   nav?: boolean;
   seoImage?: string;
@@ -19,19 +20,20 @@ export type RouteConfig = {
 };
 
 export const routes: RouteConfig[] = [
-  { path: '/', title: 'Home', navLabelKey: 'nav_home', nav: true, seoImage: '/og/home.svg', Component: HomePage },
-  { path: '/work', title: 'Work', navLabelKey: 'nav_work', nav: true, seoImage: '/og/work.svg', Component: WorkPage },
-  { path: '/blog', title: 'Blog', navLabelKey: 'nav_blog', nav: true, seoImage: '/og/blog-index.svg', Component: BlogPage },
+  { path: '/', title: 'Home', titleKey: 'nav_home', navLabelKey: 'nav_home', nav: true, seoImage: '/og/home.svg', Component: HomePage },
+  { path: '/work', title: 'Work', titleKey: 'work_title', navLabelKey: 'nav_work', nav: true, seoImage: '/og/work.svg', Component: WorkPage },
+  { path: '/blog', title: 'Blog', titleKey: 'blog_title', navLabelKey: 'nav_blog', nav: true, seoImage: '/og/blog-index.svg', Component: BlogPage },
   { path: '/blog/:id', title: 'Blog Detail', Component: BlogDetailPage },
   {
     path: '/portfolio',
     title: 'Portfolio',
+    titleKey: 'portfolio_title',
     navLabelKey: 'nav_portfolio',
     nav: true,
     seoImage: '/og/portfolio.svg',
     Component: PortfolioPage
   },
-  { path: '/contact', title: 'Contact', navLabelKey: 'nav_contact', nav: true, seoImage: '/og/contact.svg', Component: ContactPage },
+  { path: '/contact', title: 'Contact', titleKey: 'contact_title', navLabelKey: 'nav_contact', nav: true, seoImage: '/og/contact.svg', Component: ContactPage },
   { path: '/projects/:id', title: 'Project Detail', Component: ProjectDetailPage },
 ];
 

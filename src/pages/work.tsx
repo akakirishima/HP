@@ -1,5 +1,6 @@
 // Work page
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from "../contexts/LanguageContext";
 
 type Category =
@@ -501,17 +502,31 @@ export default function WorkPage() {
               style={{ animationDelay: `${0.15 * i}s` }}
             >
               {exp.href ? (
-                <a href={exp.href} className="timeline-link">
-                  <div className="timeline-date">
-                    {language === 'ja' ? exp.date_ja : exp.date_en}
-                  </div>
-                  <div className="timeline-title">
-                    {language === 'ja' ? exp.title_ja : exp.title_en}
-                  </div>
-                  <div className="timeline-desc">
-                    {language === 'ja' ? exp.desc_ja : exp.desc_en}
-                  </div>
-                </a>
+                exp.href.startsWith('/') ? (
+                  <Link to={exp.href} className="timeline-link">
+                    <div className="timeline-date">
+                      {language === 'ja' ? exp.date_ja : exp.date_en}
+                    </div>
+                    <div className="timeline-title">
+                      {language === 'ja' ? exp.title_ja : exp.title_en}
+                    </div>
+                    <div className="timeline-desc">
+                      {language === 'ja' ? exp.desc_ja : exp.desc_en}
+                    </div>
+                  </Link>
+                ) : (
+                  <a href={exp.href} className="timeline-link" target="_blank" rel="noopener noreferrer">
+                    <div className="timeline-date">
+                      {language === 'ja' ? exp.date_ja : exp.date_en}
+                    </div>
+                    <div className="timeline-title">
+                      {language === 'ja' ? exp.title_ja : exp.title_en}
+                    </div>
+                    <div className="timeline-desc">
+                      {language === 'ja' ? exp.desc_ja : exp.desc_en}
+                    </div>
+                  </a>
+                )
               ) : (
                 <>
                   <div className="timeline-date">

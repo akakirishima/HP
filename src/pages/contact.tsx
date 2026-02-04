@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
-const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined;
 const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL as string | undefined;
+const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScW3NCZd1melXGh758wsPu1F1FrqjdL_PDCJlgZVcoEoNenoQ/formResponse';
+const ENTRY_NAME = 'entry.38999424';
+const ENTRY_EMAIL = 'entry.1971939833';
+const ENTRY_MESSAGE = 'entry.627766901';
 
-type FormStatus = 'idle' | 'sending' | 'success' | 'error' | 'config-error';
+type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
 export default function ContactPage() {
   const { t, language } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -19,34 +23,28 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status === 'sending') return;
-    if (!CONTACT_ENDPOINT) {
-      setStatus('config-error');
+    if (honeypot) return;
+    if (!formData.name || !formData.email || !formData.message || !emailPattern.test(formData.email)) {
+      setStatus('error');
       window.setTimeout(() => setStatus('idle'), 5000);
-      return;
-    }
-    if (honeypot) {
       return;
     }
 
     try {
       setStatus('sending');
-      const payload = new FormData();
-      payload.append('name', formData.name);
-      payload.append('email', formData.email);
-      payload.append('message', formData.message);
-      payload.append('language', language);
+      const body = new URLSearchParams();
+      body.append(ENTRY_NAME, formData.name);
+      body.append(ENTRY_EMAIL, formData.email);
+      body.append(ENTRY_MESSAGE, formData.message);
 
-      const response = await fetch(CONTACT_ENDPOINT, {
+      await fetch(FORM_ACTION, {
         method: 'POST',
-        body: payload,
+        mode: 'no-cors',
         headers: {
-          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         },
+        body: body.toString(),
       });
-
-      if (!response.ok) {
-        throw new Error('Failed');
-      }
 
       setFormData({ name: '', email: '', message: '' });
       setStatus('success');
@@ -147,7 +145,6 @@ export default function ContactPage() {
           >
             {status === 'success' && t('contact_status_success')}
             {status === 'error' && t('contact_status_error')}
-            {status === 'config-error' && t('contact_status_config_error')}
             {status === 'sending' && t('contact_sending')}
           </p>
         )}

@@ -33,6 +33,7 @@ const experiences: Experience[] = [
     title_en: 'Master’s Degree Completion (Planned)',
     desc_ja: '修士課程修了予定',
     desc_en: 'Planned master’s completion',
+    href: '/blog/education-masters-completion-plan',
   },
   {
     category: 'research',
@@ -42,6 +43,7 @@ const experiences: Experience[] = [
     title_en: 'Master’s Program (Thi Thi Zin Lab)',
     desc_ja: 'Thi Thi Zin 研究室 所属予定',
     desc_en: 'Planned lab membership',
+    href: '/blog/research-masters-plan',
   },
   {
     category: 'research',
@@ -51,6 +53,7 @@ const experiences: Experience[] = [
     title_en: 'Thi Thi Zin Lab',
     desc_ja: '学部4年研究室配属',
     desc_en: 'Lab assignment in senior year',
+    href: '/blog/research-thi-thi-zin',
   },
   {
     category: 'part_time',
@@ -101,6 +104,7 @@ const experiences: Experience[] = [
     title_en: 'Yufu-dake Team PW',
     desc_ja: 'ワンダーフォーゲル部 山行',
     desc_en: 'Wanderfogel club trip',
+    href: '/blog/mountain-yufu',
   },
   {
     category: 'awards_other',
@@ -131,6 +135,7 @@ const experiences: Experience[] = [
     title_en: 'Kaimon-dake Hike',
     desc_ja: 'ワンダーフォーゲル部 山行',
     desc_en: 'Wanderfogel club trip',
+    href: '/blog/mountain-kaimon',
   },
   {
     category: 'study_abroad',
@@ -181,6 +186,7 @@ const experiences: Experience[] = [
     title_en: 'Tateyama (Summer Camp)',
     desc_ja: 'ワンダーフォーゲル部 山行',
     desc_en: 'Wanderfogel club trip',
+    href: '/blog/mountain-tateyama',
   },
   {
     category: 'clubs',
@@ -191,6 +197,7 @@ const experiences: Experience[] = [
     title_en: 'Shaka-dake (Oita/Fukuoka) Hike',
     desc_ja: 'ワンダーフォーゲル部 山行',
     desc_en: 'Wanderfogel club trip',
+    href: '/blog/mountain-shaka',
   },
   {
     category: 'clubs',
@@ -201,6 +208,7 @@ const experiences: Experience[] = [
     title_en: 'University Festival: “Miyazaki Tower Battle”',
     desc_ja: '来場200人',
     desc_en: '200 visitors',
+    href: '/blog/festival-miyazaki-tower-battle',
   },
   {
     category: 'clubs',
@@ -211,6 +219,7 @@ const experiences: Experience[] = [
     title_en: 'Yakushima / Miyanoura-dake (Spring Camp)',
     desc_ja: 'ワンダーフォーゲル部 合宿',
     desc_en: 'Wanderfogel club camp',
+    href: '/blog/mountain-yakushima-miyanoura',
   },
   {
     category: 'part_time',
@@ -231,6 +240,7 @@ const experiences: Experience[] = [
     title_en: 'Shiraga-dake PW',
     desc_ja: 'ワンダーフォーゲル部 山行',
     desc_en: 'Wanderfogel club trip',
+    href: '/blog/mountain-shiraga',
   },
   {
     category: 'clubs',
@@ -241,6 +251,7 @@ const experiences: Experience[] = [
     title_en: 'University Festival: Kinect Game Challenge',
     desc_ja: '来場5人',
     desc_en: '5 visitors',
+    href: '/blog/festival-kinect',
   },
   {
     category: 'part_time',
@@ -261,6 +272,7 @@ const experiences: Experience[] = [
     title_en: 'Student Org: dotcube (Executive)',
     desc_ja: '執行部で部を牽引',
     desc_en: 'Executive team member',
+    href: '/blog/club-dotcube',
   },
   {
     category: 'clubs',
@@ -271,6 +283,7 @@ const experiences: Experience[] = [
     title_en: 'dotcube AI Website Workshop Instructor',
     desc_ja: '小学生向け講座',
     desc_en: 'Workshop for elementary students',
+    href: '/blog/club-dotcube-workshop',
   },
   {
     category: 'clubs',
@@ -281,6 +294,7 @@ const experiences: Experience[] = [
     title_en: 'Miyazaki Univ. Wanderfogel Club',
     desc_ja: '山行・合宿に参加',
     desc_en: 'Trips and camps',
+    href: '/blog/club-wanderfogel',
   },
   {
     category: 'education',
@@ -290,6 +304,7 @@ const experiences: Experience[] = [
     title_en: 'Miyazaki University (Engineering / ICT Program)',
     desc_ja: '工学部 工学科',
     desc_en: 'Faculty of Engineering',
+    href: '/blog/education-miyazaki-university',
   },
   {
     category: 'education',
@@ -299,6 +314,7 @@ const experiences: Experience[] = [
     title_en: 'Ogi High School',
     desc_ja: '入学 → 卒業（ストレート進学）',
     desc_en: 'Entered and graduated',
+    href: '/blog/education-high-school',
   },
   {
     category: 'education',
@@ -308,6 +324,7 @@ const experiences: Experience[] = [
     title_en: 'Mikazuki Junior/Senior High',
     desc_ja: '入学 → 卒業（ストレート進学）',
     desc_en: 'Entered and graduated',
+    href: '/blog/education-junior-high',
   },
   {
     category: 'education',
@@ -317,6 +334,7 @@ const experiences: Experience[] = [
     title_en: 'Mikazuki Elementary School',
     desc_ja: '入学 → 卒業（ストレート進学）',
     desc_en: 'Entered and graduated',
+    href: '/blog/education-elementary',
   },
   {
     category: 'education',
@@ -326,6 +344,7 @@ const experiences: Experience[] = [
     title_en: 'Mikazuki Kindergarten',
     desc_ja: '卒園（ストレート進学）',
     desc_en: 'Graduated',
+    href: '/blog/education-kindergarten',
   },
   {
     category: 'education',
@@ -335,6 +354,7 @@ const experiences: Experience[] = [
     title_en: 'Born',
     desc_ja: '誕生',
     desc_en: 'Birth',
+    href: '/blog/education-birth',
   },
 ];
 

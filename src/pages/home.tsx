@@ -6,6 +6,7 @@ import { newsItems } from '../data/news';
 export default function HomePage() {
   const { t, language } = useLanguage();
   const [isProfileExpanded, setIsProfileExpanded] = useState(false);
+  const isCjk = language === 'ja' || language === 'ko';
 
   return (
     <div className="page-home">
@@ -18,8 +19,8 @@ export default function HomePage() {
         <h1
           className="hero__title gradient-text animate-fade-in-up animate-delay-1"
           style={{
-            fontSize: language === 'ja' ? 'clamp(2.5rem, 8vw, 5rem)' : 'clamp(2rem, 7vw, 4.5rem)',
-            letterSpacing: language === 'ja' ? '0.02em' : '-0.03em',
+            fontSize: isCjk ? 'clamp(2.5rem, 8vw, 5rem)' : 'clamp(2rem, 7vw, 4.5rem)',
+            letterSpacing: isCjk ? '0.02em' : '-0.03em',
           }}
         >
           {t('hero_title')}
@@ -104,7 +105,7 @@ export default function HomePage() {
                   {item.date}
                 </span>
                 <span className="news-text">
-                  {language === 'ja' ? item.text_ja : item.text_en}
+                  {language === 'ja' ? item.text_ja : language === 'ko' ? item.text_ko : item.text_en}
                 </span>
               </li>
             ))}

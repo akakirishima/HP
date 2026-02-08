@@ -17,10 +17,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const [language, setLanguageState] = useState<Language>(() => {
         if (typeof window !== 'undefined') {
             const saved = localStorage.getItem('app_language') as Language;
-            if (saved && (saved === 'ja' || saved === 'en')) return saved;
+            if (saved && (saved === 'ja' || saved === 'en' || saved === 'ko')) return saved;
 
             const browserLang = navigator.language;
-            return browserLang.startsWith('en') ? 'en' : 'ja';
+            if (browserLang.startsWith('ja')) return 'ja';
+            if (browserLang.startsWith('ko')) return 'ko';
+            if (browserLang.startsWith('en')) return 'en';
+            return 'ja';
         }
         return 'ja';
     });

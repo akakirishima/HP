@@ -1,4 +1,4 @@
-export type Language = 'ja' | 'en';
+export type Language = 'ja' | 'en' | 'ko';
 
 export type TranslationKeys =
     | 'site_title'
@@ -57,8 +57,7 @@ export type TranslationKeys =
     | 'project_challenges'
     | 'project_visit_site'
     | 'nav_toggle'
-    | 'nav_switch_to_en'
-    | 'nav_switch_to_ja'
+    | 'nav_language'
     | 'loading'
     | 'footer_copyright';
 
@@ -120,8 +119,7 @@ export const translations: Record<Language, Record<TranslationKeys, string>> = {
         project_challenges: '技術的チャレンジ / 苦労話',
         project_visit_site: 'サイトを見る →',
         nav_toggle: 'メニューを開閉',
-        nav_switch_to_en: 'Switch to English',
-        nav_switch_to_ja: 'Switch to 日本語',
+        nav_language: '言語',
         loading: '読み込み中...',
         footer_copyright: '© {year} My Portfolio. All Rights Reserved.',
     },
@@ -182,9 +180,69 @@ export const translations: Record<Language, Record<TranslationKeys, string>> = {
         project_challenges: 'Technical Challenges',
         project_visit_site: 'Visit Site →',
         nav_toggle: 'Toggle menu',
-        nav_switch_to_en: 'Switch to English',
-        nav_switch_to_ja: 'Switch to 日本語',
+        nav_language: 'Language',
         loading: 'Loading...',
         footer_copyright: '© {year} My Portfolio. All Rights Reserved.',
+    },
+    ko: {
+        site_title: '나의 포트폴리오',
+        nav_home: '홈',
+        nav_work: '경력',
+        nav_blog: '블로그',
+        nav_portfolio: '포트폴리오',
+        nav_contact: '문의',
+        hero_title: '창의성을,\n형태로 만들다.',
+        hero_subtitle: '웹 개발자 / UI 디자이너',
+        hero_scroll: 'SCROLL',
+        work_title: '경력',
+        work_desc: '지금까지의 경력과 프로젝트 경험을 소개합니다.',
+        blog_title: '블로그',
+        blog_desc: '기술과 디자인에 대한 생각, 일상의 배움을 정리합니다.',
+        blog_read_more: '자세히 보기 →',
+        blog_not_found_title: '게시물을 찾을 수 없습니다',
+        blog_back: '← 블로그 목록으로',
+        portfolio_title: '포트폴리오',
+        portfolio_desc: '제작한 웹사이트와 애플리케이션의 갤러리.',
+        contact_title: '문의',
+        contact_desc: '의뢰나 상담이 있으시면 편하게 연락해주세요.',
+        contact_company_label: '회사명',
+        contact_label_name: '이름',
+        contact_label_email: '이메일',
+        contact_label_message: '메시지',
+        contact_placeholder_name: '홍길동',
+        contact_placeholder_message: '문의 내용을 입력해주세요...',
+        contact_send: '보내기',
+        contact_sending: '전송 중...',
+        contact_status_success: '전송되었습니다. 감사합니다!',
+        contact_status_error: '전송에 실패했습니다. 입력 내용을 확인해주세요.',
+        contact_status_config_error: '전송 대상이 설정되어 있지 않습니다.',
+        contact_direct_email: '또는 이메일로 직접 문의하세요:',
+        home_cta_portfolio: '작업 보기',
+        home_cta_contact: '문의하기',
+        home_news_title: '최신 소식',
+        home_skills_title: '스킬',
+        profile_role: '웹 개발자 / UI 디자이너',
+        profile_name: '키리시마',
+        profile_image_alt: '프로필',
+        profile_bio: '도쿄에서 활동하는 웹 개발자입니다. 사용성과 아름다움을 겸비한 디지털 프로덕트를 만드는 데 열정을 가지고 있습니다.',
+        profile_expand: '더 보기',
+        profile_collapse: '닫기',
+        profile_detail: '대학 연구를 통해 데이터 분석과 시각화에 흥미를 갖게 되었고, 이를 계기로 웹 개발의 세계에 들어왔습니다. 프론트엔드 기술을 중심으로 사용자 경험을 극대화하는 인터페이스 설계를 강점으로 삼고 있습니다.',
+        profile_view_resume: '경력 보기',
+        skill_frontend: '프론트엔드',
+        skill_backend: '백엔드',
+        skill_design: '디자인',
+        skill_tools: '도구',
+        project_not_found_title: '프로젝트를 찾을 수 없습니다',
+        project_back: '← 포트폴리오로 돌아가기',
+        project_live_preview: '라이브 미리보기',
+        project_open_new_tab: '새 탭에서 열기',
+        project_about: '프로젝트 소개',
+        project_challenges: '기술적 도전 / 어려움',
+        project_visit_site: '사이트 보기 →',
+        nav_toggle: '메뉴 열기/닫기',
+        nav_language: '언어',
+        loading: '로딩 중...',
+        footer_copyright: '© {year} My Portfolio. 모든 권리 보유.',
     }
 };

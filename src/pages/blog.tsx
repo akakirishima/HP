@@ -32,10 +32,10 @@ export default function BlogPage() {
               </div>
             </div>
             <h3 className="blog-title">
-              {language === 'ja' ? post.title_ja : post.title_en}
+              {language === 'ja' ? post.title_ja : language === 'ko' ? post.title_ko : post.title_en}
             </h3>
             <p className="blog-excerpt">
-              {language === 'ja' ? post.excerpt_ja : post.excerpt_en}
+              {language === 'ja' ? post.excerpt_ja : language === 'ko' ? post.excerpt_ko : post.excerpt_en}
             </p>
             <span className="blog-link">
               {t('blog_read_more')}

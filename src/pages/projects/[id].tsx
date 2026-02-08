@@ -25,7 +25,7 @@ export default function ProjectDetailPage() {
     }
 
     const title = project.title;
-    const description = language === 'ja' ? project.desc_ja : project.desc_en;
+    const description = language === 'ja' ? project.desc_ja : language === 'ko' ? project.desc_ko : project.desc_en;
     const canonical = normalized ? `${normalized}/projects/${project.id}` : undefined;
 
     return (
@@ -68,7 +68,7 @@ export default function ProjectDetailPage() {
                 </div>
 
                 <p style={{ fontSize: '1.15rem', color: '#666', marginBottom: '1.5rem' }}>
-                    {language === 'ja' ? project.desc_ja : project.desc_en}
+                    {language === 'ja' ? project.desc_ja : language === 'ko' ? project.desc_ko : project.desc_en}
                 </p>
 
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -164,7 +164,7 @@ export default function ProjectDetailPage() {
                         lineHeight: 1.9
                     }}
                 >
-                    {language === 'ja' ? project.longDesc_ja : project.longDesc_en}
+                    {language === 'ja' ? project.longDesc_ja : language === 'ko' ? project.longDesc_ko : project.longDesc_en}
                 </div>
             </section>
 
@@ -175,7 +175,7 @@ export default function ProjectDetailPage() {
                 </h2>
                 <div className="card" style={{ padding: '2rem', marginTop: '1.5rem' }}>
                     <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 2 }}>
-                        {(language === 'ja' ? project.challenges_ja : project.challenges_en).map((challenge, i) => (
+                        {(language === 'ja' ? project.challenges_ja : language === 'ko' ? project.challenges_ko : project.challenges_en).map((challenge, i) => (
                             <li key={i} style={{ marginBottom: '0.75rem' }}>
                                 {challenge}
                             </li>

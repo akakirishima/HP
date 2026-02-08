@@ -10,7 +10,7 @@ const ENTRY_MESSAGE = 'entry.627766901';
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
 export default function ContactPage() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');

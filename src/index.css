@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
 :root {
   /* Premium Color Palette */
@@ -22,7 +22,7 @@
   --shadow-lg: 0 16px 48px rgba(0, 64, 152, 0.16);
   --shadow-glow: 0 0 40px rgba(77, 167, 224, 0.3);
 
-  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
   line-height: 1.8;
   font-weight: 400;
   color-scheme: light;

@@ -21,8 +21,8 @@ export default function BlogDetailPage() {
     );
   }
 
-  const title = language === 'ja' ? post.title_ja : post.title_en;
-  const description = language === 'ja' ? post.excerpt_ja : post.excerpt_en;
+  const title = language === 'ja' ? post.title_ja : language === 'ko' ? post.title_ko : post.title_en;
+  const description = language === 'ja' ? post.excerpt_ja : language === 'ko' ? post.excerpt_ko : post.excerpt_en;
   const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
   const normalized = siteUrl?.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
   const canonical = normalized ? `${normalized}/blog/${post.id}` : undefined;
@@ -60,7 +60,7 @@ export default function BlogDetailPage() {
         </div>
         <h1 className="blog-title">{title}</h1>
         <div className="blog-content">
-          {(language === 'ja' ? post.content_ja : post.content_en).map((paragraph, i) => (
+          {(language === 'ja' ? post.content_ja : language === 'ko' ? post.content_ko : post.content_en).map((paragraph, i) => (
             <p key={i}>{renderParagraph(paragraph)}</p>
           ))}
         </div>

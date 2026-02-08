@@ -18,6 +18,8 @@ export default function SEO({
     const defaultDescription =
         language === 'ja'
             ? "Web開発者Kirishimaのポートフォリオサイトです。制作実績やブログを掲載しています。"
+            : language === 'ko'
+            ? "웹 개발자 Kirishima의 포트폴리오 사이트입니다. 제작 실적과 블로그 글을 소개합니다."
             : "Kirishima's portfolio site featuring projects and blog posts about web development.";
     const resolvedDescription = description ?? defaultDescription;
     const siteTitle = "Kirishima's Portfolio";

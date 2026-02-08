@@ -47,7 +47,7 @@ export default function PortfolioPage() {
             <div className="project-card__content">
               <h3 className="project-card__title">{project.title}</h3>
               <p className="project-card__desc">
-                {language === 'ja' ? project.desc_ja : project.desc_en}
+                {language === 'ja' ? project.desc_ja : language === 'ko' ? project.desc_ko : project.desc_en}
               </p>
               <div className="project-card__tags">
                 {project.tags.map(tag => (

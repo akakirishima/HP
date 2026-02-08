@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import { navRoutes } from '../data/routes';
+import type { Language } from '../i18n/translations';
 
 type HeaderProps = {
   title?: string;
@@ -14,6 +15,12 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const previousBodyOverflowRef = useRef<string | null>(null);
   const { language, setLanguage, t } = useLanguage();
+
+  const languageOptions: { code: Language; shortLabel: string; label: string }[] = [
+    { code: 'ja', shortLabel: 'JP', label: '日本語' },
+    { code: 'en', shortLabel: 'EN', label: 'English' },
+    { code: 'ko', shortLabel: 'KR', label: '한국어' },
+  ];
 
   const links = navRoutes;
 
@@ -51,8 +58,8 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
     setMobileMenuOpen(false);
   };
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'ja' ? 'en' : 'ja');
+  const handleLanguageSelect = (lang: Language) => {
+    setLanguage(lang);
   };
 
   return (
@@ -103,32 +110,56 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
                 );
               })}
 
-              <button
-                onClick={toggleLanguage}
+              <div
+                role="group"
+                aria-label={t('nav_language')}
                 style={{
-                  background: 'transparent',
+                  display: 'inline-flex',
                   border: '1px solid #004098',
-                  color: '#004098',
-                  borderRadius: '100px',
-                  padding: '4px 12px',
-                  cursor: 'pointer',
-                  marginLeft: '12px',
-                  fontSize: '0.8rem',
-                  fontFamily: 'inherit',
-                  fontWeight: 600,
-                  transition: 'all 0.2s'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#004098';
-                  e.currentTarget.style.color = '#fff';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = '#004098';
+                  borderRadius: '999px',
+                  overflow: 'hidden',
+                  marginLeft: '12px'
                 }}
               >
-                {language === 'ja' ? 'EN' : 'JP'}
-              </button>
+                {languageOptions.map((option, index) => {
+                  const isActive = language === option.code;
+                  return (
+                    <button
+                      key={option.code}
+                      type="button"
+                      onClick={() => handleLanguageSelect(option.code)}
+                      aria-pressed={isActive}
+                      title={option.label}
+                      style={{
+                        background: isActive ? '#004098' : 'transparent',
+                        color: isActive ? '#fff' : '#004098',
+                        border: 'none',
+                        borderRight: index < languageOptions.length - 1 ? '1px solid #004098' : 'none',
+                        padding: '4px 10px',
+                        cursor: 'pointer',
+                        fontSize: '0.8rem',
+                        fontFamily: 'inherit',
+                        fontWeight: 600,
+                        transition: 'all 0.2s'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive) {
+                          e.currentTarget.style.background = '#004098';
+                          e.currentTarget.style.color = '#fff';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive) {
+                          e.currentTarget.style.background = 'transparent';
+                          e.currentTarget.style.color = '#004098';
+                        }
+                      }}
+                    >
+                      {option.shortLabel}
+                    </button>
+                  );
+                })}
+              </div>
             </nav>
 
             {/* Hamburger Button (Mobile) */}
@@ -171,20 +202,36 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
             </Link>
           );
         })}
-        <button
-          onClick={() => { toggleLanguage(); handleLinkClick(); }}
-          style={{
-            marginTop: '24px',
-            background: 'transparent',
-            border: '1px solid #fff',
-            color: '#fff',
-            padding: '8px 16px',
-            borderRadius: '4px',
-            fontSize: '1.2rem'
-          }}
-        >
-          {language === 'ja' ? t('nav_switch_to_en') : t('nav_switch_to_ja')}
-        </button>
+        <div style={{ marginTop: '24px', textAlign: 'center' }}>
+          <div style={{ color: '#bbb', fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '12px' }}>
+            {t('nav_language')}
+          </div>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            {languageOptions.map((option) => {
+              const isActive = language === option.code;
+              return (
+                <button
+                  key={`mobile-${option.code}`}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => { handleLanguageSelect(option.code); handleLinkClick(); }}
+                  style={{
+                    background: isActive ? '#fff' : 'transparent',
+                    border: '1px solid #fff',
+                    color: isActive ? '#000' : '#fff',
+                    padding: '8px 14px',
+                    borderRadius: '999px',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </nav>
     </>
   );

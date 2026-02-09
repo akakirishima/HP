@@ -1095,7 +1095,12 @@ select:focus-visible {
   color: #15803d;
 }
 
+.form-status[data-status='unconfirmed'] {
+  color: #15803d;
+}
+
 .form-status[data-status='error'],
+.form-status[data-status='config_error'],
 .form-status[data-status='config-error'] {
   color: #b91c1c;
 }

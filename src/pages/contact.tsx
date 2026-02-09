@@ -3,9 +3,51 @@ import { useLanguage } from "../contexts/LanguageContext";
 
 const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL as string | undefined;
 const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined;
-const ENTRY_NAME = 'entry.38999424';
-const ENTRY_EMAIL = 'entry.1971939833';
-const ENTRY_MESSAGE = 'entry.627766901';
+const CONTACT_GOOGLE_ENTRY_NAME = import.meta.env.VITE_CONTACT_GOOGLE_ENTRY_NAME?.trim();
+const CONTACT_GOOGLE_ENTRY_EMAIL = import.meta.env.VITE_CONTACT_GOOGLE_ENTRY_EMAIL?.trim();
+const CONTACT_GOOGLE_ENTRY_MESSAGE = import.meta.env.VITE_CONTACT_GOOGLE_ENTRY_MESSAGE?.trim();
+const DEFAULT_GOOGLE_FORM_ID = '1FAIpQLScW3NCZd1melXGh758wsPu1F1FrqjdL_PDCJlgZVcoEoNenoQ';
+const DEFAULT_GOOGLE_ENTRY_NAME = 'entry.38999424';
+const DEFAULT_GOOGLE_ENTRY_EMAIL = 'entry.1971939833';
+const DEFAULT_GOOGLE_ENTRY_MESSAGE = 'entry.627766901';
+const GOOGLE_FORMS_ENDPOINT_PATTERN = /^https?:\/\/docs\.google\.com\/forms\/d\/e\/([^/]+)\/(viewform|formResponse)\/?(?:\?.*)?$/;
+
+type GoogleFormConfig = {
+  endpoint: string;
+  entryName: string;
+  entryEmail: string;
+  entryMessage: string;
+};
+
+// `undefined` means a non-Google endpoint, `null` means a malformed/incomplete Google Forms config.
+const resolveGoogleFormConfig = (endpoint: string): GoogleFormConfig | undefined | null => {
+  const matched = endpoint.match(GOOGLE_FORMS_ENDPOINT_PATTERN);
+  if (!matched) {
+    if (endpoint.includes('docs.google.com/forms/')) return null;
+    return undefined;
+  }
+
+  const [, formId] = matched;
+  const hasAnyCustomEntry = Boolean(
+    CONTACT_GOOGLE_ENTRY_NAME || CONTACT_GOOGLE_ENTRY_EMAIL || CONTACT_GOOGLE_ENTRY_MESSAGE,
+  );
+  const hasAllCustomEntry = Boolean(
+    CONTACT_GOOGLE_ENTRY_NAME && CONTACT_GOOGLE_ENTRY_EMAIL && CONTACT_GOOGLE_ENTRY_MESSAGE,
+  );
+
+  // Prevent accidental mixed configuration that can silently lose submissions.
+  if (hasAnyCustomEntry && !hasAllCustomEntry) return null;
+
+  // The default bundled entry IDs are only valid for the default form.
+  if (formId !== DEFAULT_GOOGLE_FORM_ID && !hasAllCustomEntry) return null;
+
+  return {
+    endpoint: `https://docs.google.com/forms/d/e/${formId}/formResponse`,
+    entryName: CONTACT_GOOGLE_ENTRY_NAME ?? DEFAULT_GOOGLE_ENTRY_NAME,
+    entryEmail: CONTACT_GOOGLE_ENTRY_EMAIL ?? DEFAULT_GOOGLE_ENTRY_EMAIL,
+    entryMessage: CONTACT_GOOGLE_ENTRY_MESSAGE ?? DEFAULT_GOOGLE_ENTRY_MESSAGE,
+  };
+};
 
 type FormStatus =
   | 'idle'
@@ -67,14 +109,19 @@ export default function ContactPage() {
     try {
       clearStatusTimeout();
       setStatus('sending');
-      const isGoogleFormEndpoint = endpoint.includes('docs.google.com/forms/');
-      if (isGoogleFormEndpoint) {
-        const body = new URLSearchParams();
-        body.append(ENTRY_NAME, formData.name);
-        body.append(ENTRY_EMAIL, formData.email);
-        body.append(ENTRY_MESSAGE, formData.message);
+      const googleFormConfig = resolveGoogleFormConfig(endpoint);
+      if (googleFormConfig === null) {
+        setTemporaryStatus('config_error');
+        return;
+      }
 
-        await fetch(endpoint, {
+      if (googleFormConfig) {
+        const body = new URLSearchParams();
+        body.append(googleFormConfig.entryName, formData.name);
+        body.append(googleFormConfig.entryEmail, formData.email);
+        body.append(googleFormConfig.entryMessage, formData.message);
+
+        await fetch(googleFormConfig.endpoint, {
           method: 'POST',
           mode: 'no-cors',
           headers: {

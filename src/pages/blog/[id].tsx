@@ -48,6 +48,11 @@ export default function BlogDetailPage() {
       <Link to="/blog" className="blog-back">
         {t('blog_back')}
       </Link>
+      {language === 'zh' && (
+        <p style={{ color: '#666', marginBottom: '1rem' }}>
+          {t('content_notice_en_fallback')}
+        </p>
+      )}
 
       <div className="blog-detail">
         <div className="blog-meta">

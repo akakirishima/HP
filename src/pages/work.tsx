@@ -460,13 +460,13 @@ const experiences: Experience[] = [
 
 export default function WorkPage() {
   const { t, language } = useLanguage();
-  const categories: { id: Category; label_ja: string; label_en: string; label_ko: string }[] = [
-    { id: 'education', label_ja: '学歴', label_en: 'Education', label_ko: '학력' },
-    { id: 'research', label_ja: '研究', label_en: 'Research', label_ko: '연구' },
-    { id: 'study_abroad', label_ja: '留学', label_en: 'Study Abroad', label_ko: '유학' },
-    { id: 'clubs', label_ja: '部活', label_en: 'Clubs', label_ko: '동아리' },
-    { id: 'part_time', label_ja: 'アルバイト', label_en: 'Part-time', label_ko: '아르바이트' },
-    { id: 'awards_other', label_ja: '受賞・その他', label_en: 'Awards & Other', label_ko: '수상·기타' },
+  const categories: { id: Category; label_ja: string; label_en: string; label_ko: string; label_zh: string }[] = [
+    { id: 'education', label_ja: '学歴', label_en: 'Education', label_ko: '학력', label_zh: '学历' },
+    { id: 'research', label_ja: '研究', label_en: 'Research', label_ko: '연구', label_zh: '研究' },
+    { id: 'study_abroad', label_ja: '留学', label_en: 'Study Abroad', label_ko: '유학', label_zh: '留学' },
+    { id: 'clubs', label_ja: '部活', label_en: 'Clubs', label_ko: '동아리', label_zh: '社团' },
+    { id: 'part_time', label_ja: 'アルバイト', label_en: 'Part-time', label_ko: '아르바이트', label_zh: '兼职' },
+    { id: 'awards_other', label_ja: '受賞・その他', label_en: 'Awards & Other', label_ko: '수상·기타', label_zh: '获奖与其他' },
   ];
 
   const defaultSelected: Category[] = ['education', 'awards_other', 'research', 'study_abroad'];
@@ -495,6 +495,11 @@ export default function WorkPage() {
       <p className="animate-fade-in-up animate-delay-1" style={{ color: '#666', marginBottom: '3rem', marginTop: '1rem' }}>
         {t('work_desc')}
       </p>
+      {language === 'zh' && (
+        <p style={{ color: '#666', marginTop: '-2rem', marginBottom: '2rem' }}>
+          {t('content_notice_en_fallback')}
+        </p>
+      )}
 
       <section className="category-chips">
         <div className="chip-controls">
@@ -512,7 +517,7 @@ export default function WorkPage() {
               setPresetMode('core');
             }}
           >
-            {language === 'ja' ? '主要のみ' : language === 'ko' ? '핵심만' : 'Core Only'}
+            {language === 'ja' ? '主要のみ' : language === 'ko' ? '핵심만' : language === 'zh' ? '仅核心' : 'Core Only'}
           </button>
           <button
             type="button"
@@ -528,7 +533,7 @@ export default function WorkPage() {
               setPresetMode('all');
             }}
           >
-            {language === 'ja' ? '全て' : language === 'ko' ? '전체' : 'All'}
+            {language === 'ja' ? '全て' : language === 'ko' ? '전체' : language === 'zh' ? '全部' : 'All'}
           </button>
         </div>
         {categories.map((cat) => {
@@ -550,14 +555,14 @@ export default function WorkPage() {
                 setPresetMode(null);
               }}
             >
-                {language === 'ja' ? cat.label_ja : language === 'ko' ? cat.label_ko : cat.label_en}
+                {language === 'ja' ? cat.label_ja : language === 'ko' ? cat.label_ko : language === 'zh' ? cat.label_zh : cat.label_en}
               </button>
 
               {isClubs && isActive && (
                 <div className="chip-group__children">
                     {[
-                    { id: 'dotcube' as const, label_ja: 'Dotcube', label_en: 'Dotcube', label_ko: 'Dotcube' },
-                    { id: 'wanderfogel' as const, label_ja: 'ワンダーフォーゲル', label_en: 'Wanderfogel', label_ko: 'Wanderfogel' },
+                    { id: 'dotcube' as const, label_ja: 'Dotcube', label_en: 'Dotcube', label_ko: 'Dotcube', label_zh: 'Dotcube' },
+                    { id: 'wanderfogel' as const, label_ja: 'ワンダーフォーゲル', label_en: 'Wanderfogel', label_ko: 'Wanderfogel', label_zh: 'Wanderfogel' },
                   ].map((group) => {
                     const isGroupActive = selectedClubGroups.includes(group.id);
                     return (
@@ -575,7 +580,7 @@ export default function WorkPage() {
                             setPresetMode(null);
                           }}
                         >
-                        {language === 'ja' ? group.label_ja : language === 'ko' ? group.label_ko : group.label_en}
+                        {language === 'ja' ? group.label_ja : language === 'ko' ? group.label_ko : language === 'zh' ? group.label_zh : group.label_en}
                       </button>
                     );
                   })}
@@ -593,6 +598,8 @@ export default function WorkPage() {
               ? '表示するカテゴリが選択されていません。'
               : language === 'ko'
               ? '선택된 카테고리가 없습니다.'
+              : language === 'zh'
+              ? '未选择要显示的分类。'
               : 'No categories selected.'}
           </div>
         ) : (

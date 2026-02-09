@@ -6,7 +6,7 @@ import { newsItems } from '../data/news';
 export default function HomePage() {
   const { t, language } = useLanguage();
   const [isProfileExpanded, setIsProfileExpanded] = useState(false);
-  const isCjk = language === 'ja' || language === 'ko';
+  const isCjk = language === 'ja' || language === 'ko' || language === 'zh';
 
   return (
     <div className="page-home">
@@ -92,6 +92,11 @@ export default function HomePage() {
         <h2 className="section-title">
           {t('home_news_title')}
         </h2>
+        {language === 'zh' && (
+          <p style={{ color: '#666', marginTop: '0.75rem', marginBottom: '0' }}>
+            {t('content_notice_en_fallback')}
+          </p>
+        )}
 
         <div className="glass-card" style={{ padding: '2rem', marginTop: '2rem' }}>
           <ul className="news-list">

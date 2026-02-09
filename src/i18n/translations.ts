@@ -1,4 +1,4 @@
-export type Language = 'ja' | 'en' | 'ko';
+export type Language = 'ja' | 'en' | 'ko' | 'zh';
 
 export type TranslationKeys =
     | 'site_title'
@@ -32,10 +32,12 @@ export type TranslationKeys =
     | 'contact_status_success'
     | 'contact_status_error'
     | 'contact_status_config_error'
+    | 'contact_status_unconfirmed'
     | 'contact_direct_email'
     | 'home_cta_portfolio'
     | 'home_cta_contact'
     | 'home_news_title'
+    | 'content_notice_en_fallback'
     | 'home_skills_title'
     | 'profile_role'
     | 'profile_name'
@@ -94,10 +96,12 @@ export const translations: Record<Language, Record<TranslationKeys, string>> = {
         contact_status_success: '送信しました。ありがとうございます！',
         contact_status_error: '送信に失敗しました。入力内容を確認してください。',
         contact_status_config_error: '送信先が未設定です。',
+        contact_status_unconfirmed: '送信を受け付けましたが、送信結果を確認できませんでした。必要に応じてメールでもご連絡ください。',
         contact_direct_email: 'または直接メールでも受け付けています：',
         home_cta_portfolio: '作品を見る',
         home_cta_contact: 'お問い合わせ',
         home_news_title: '最新情報',
+        content_notice_en_fallback: '※ 一部のコンテンツ（ブログ本文・実績詳細など）は現在英語表示です。',
         home_skills_title: 'スキル',
         profile_role: 'Web Developer / UI Designer',
         profile_name: '霧島',
@@ -155,10 +159,12 @@ export const translations: Record<Language, Record<TranslationKeys, string>> = {
         contact_status_success: 'Message sent. Thank you!',
         contact_status_error: 'Failed to send. Please check your input.',
         contact_status_config_error: 'Contact endpoint is not configured.',
+        contact_status_unconfirmed: 'Your message was submitted, but delivery could not be verified. Please email directly if needed.',
         contact_direct_email: 'Or reach out directly via email:',
         home_cta_portfolio: 'View Portfolio',
         home_cta_contact: 'Contact Me',
         home_news_title: 'Latest News',
+        content_notice_en_fallback: '* Some content (for example, blog bodies and project details) is currently shown in English.',
         home_skills_title: 'Skills',
         profile_role: 'Web Developer / UI Designer',
         profile_name: 'Kirishima',
@@ -216,10 +222,12 @@ export const translations: Record<Language, Record<TranslationKeys, string>> = {
         contact_status_success: '전송되었습니다. 감사합니다!',
         contact_status_error: '전송에 실패했습니다. 입력 내용을 확인해주세요.',
         contact_status_config_error: '전송 대상이 설정되어 있지 않습니다.',
+        contact_status_unconfirmed: '전송 요청은 접수되었지만 결과를 확인할 수 없습니다. 필요하면 이메일로도 연락해 주세요.',
         contact_direct_email: '또는 이메일로 직접 문의하세요:',
         home_cta_portfolio: '작업 보기',
         home_cta_contact: '문의하기',
         home_news_title: '최신 소식',
+        content_notice_en_fallback: '※ 일부 콘텐츠(블로그 본문, 프로젝트 상세 등)는 현재 영어로 표시됩니다.',
         home_skills_title: '스킬',
         profile_role: '웹 개발자 / UI 디자이너',
         profile_name: '키리시마',
@@ -244,5 +252,68 @@ export const translations: Record<Language, Record<TranslationKeys, string>> = {
         nav_language: '언어',
         loading: '로딩 중...',
         footer_copyright: '© {year} My Portfolio. 모든 권리 보유.',
+    },
+    zh: {
+        site_title: '我的作品集',
+        nav_home: '首页',
+        nav_work: '经历',
+        nav_blog: '博客',
+        nav_portfolio: '作品集',
+        nav_contact: '联系',
+        hero_title: '将创意，\n化为现实。',
+        hero_subtitle: 'Web 开发者 / UI 设计师',
+        hero_scroll: '滚动',
+        work_title: '经历',
+        work_desc: '介绍我迄今为止的职业经历与项目经验。',
+        blog_title: '博客',
+        blog_desc: '记录关于技术与设计的思考，以及日常学习心得。',
+        blog_read_more: '阅读更多 →',
+        blog_not_found_title: '未找到文章',
+        blog_back: '← 返回博客列表',
+        portfolio_title: '作品集',
+        portfolio_desc: '我制作的网站与应用程序作品展示。',
+        contact_title: '联系',
+        contact_desc: '欢迎随时联系我，洽谈合作或咨询。',
+        contact_company_label: '公司',
+        contact_label_name: '姓名',
+        contact_label_email: '邮箱',
+        contact_label_message: '留言',
+        contact_placeholder_name: '张三',
+        contact_placeholder_message: '请输入您的留言...',
+        contact_send: '发送',
+        contact_sending: '发送中...',
+        contact_status_success: '已发送，感谢您的联系！',
+        contact_status_error: '发送失败，请检查输入内容。',
+        contact_status_config_error: '联系端点尚未配置。',
+        contact_status_unconfirmed: '已提交发送请求，但无法确认送达结果。如有需要，请通过邮件直接联系。',
+        contact_direct_email: '或者也可以直接发送邮件：',
+        home_cta_portfolio: '查看作品',
+        home_cta_contact: '联系我',
+        home_news_title: '最新动态',
+        content_notice_en_fallback: '※ 部分内容（如博客正文、项目详情）目前仅提供英文。',
+        home_skills_title: '技能',
+        profile_role: 'Web 开发者 / UI 设计师',
+        profile_name: 'Kirishima',
+        profile_image_alt: '个人头像',
+        profile_bio: '我是一名常驻东京的 Web 开发者，热衷于打造兼具易用性与美感的数字产品。',
+        profile_expand: '了解更多',
+        profile_collapse: '收起',
+        profile_detail: '在大学研究中，我对数据分析与可视化产生兴趣，由此走入 Web 开发领域。专注前端技术，擅长设计最大化用户体验的界面。',
+        profile_view_resume: '查看经历',
+        skill_frontend: '前端',
+        skill_backend: '后端',
+        skill_design: '设计',
+        skill_tools: '工具',
+        project_not_found_title: '未找到项目',
+        project_back: '← 返回作品集',
+        project_live_preview: '在线预览',
+        project_open_new_tab: '在新标签页打开',
+        project_about: '关于项目',
+        project_challenges: '技术挑战',
+        project_visit_site: '访问网站 →',
+        nav_toggle: '切换菜单',
+        nav_language: '语言',
+        loading: '加载中...',
+        footer_copyright: '© {year} My Portfolio. 保留所有权利。',
     }
 };

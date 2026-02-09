@@ -1,20 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL as string | undefined;
-const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScW3NCZd1melXGh758wsPu1F1FrqjdL_PDCJlgZVcoEoNenoQ/formResponse';
+const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined;
 const ENTRY_NAME = 'entry.38999424';
 const ENTRY_EMAIL = 'entry.1971939833';
 const ENTRY_MESSAGE = 'entry.627766901';
 
-type FormStatus = 'idle' | 'sending' | 'success' | 'error';
+type FormStatus =
+  | 'idle'
+  | 'sending'
+  | 'success'
+  | 'error'
+  | 'config_error'
+  | 'unconfirmed';
 
 export default function ContactPage() {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
+  const statusTimeoutRef = useRef<number | null>(null);
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const clearStatusTimeout = () => {
+    if (statusTimeoutRef.current !== null) {
+      window.clearTimeout(statusTimeoutRef.current);
+      statusTimeoutRef.current = null;
+    }
+  };
+
+  const setTemporaryStatus = (nextStatus: Exclude<FormStatus, 'idle' | 'sending'>) => {
+    clearStatusTimeout();
+    setStatus(nextStatus);
+    statusTimeoutRef.current = window.setTimeout(() => {
+      setStatus('idle');
+      statusTimeoutRef.current = null;
+    }, 5000);
+  };
+
+  useEffect(() => {
+    return () => {
+      clearStatusTimeout();
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -25,33 +54,61 @@ export default function ContactPage() {
     if (status === 'sending') return;
     if (honeypot) return;
     if (!formData.name || !formData.email || !formData.message || !emailPattern.test(formData.email)) {
-      setStatus('error');
-      window.setTimeout(() => setStatus('idle'), 5000);
+      setTemporaryStatus('error');
+      return;
+    }
+
+    const endpoint = CONTACT_ENDPOINT?.trim();
+    if (!endpoint) {
+      setTemporaryStatus('config_error');
       return;
     }
 
     try {
+      clearStatusTimeout();
       setStatus('sending');
-      const body = new URLSearchParams();
-      body.append(ENTRY_NAME, formData.name);
-      body.append(ENTRY_EMAIL, formData.email);
-      body.append(ENTRY_MESSAGE, formData.message);
+      const isGoogleFormEndpoint = endpoint.includes('docs.google.com/forms/');
+      if (isGoogleFormEndpoint) {
+        const body = new URLSearchParams();
+        body.append(ENTRY_NAME, formData.name);
+        body.append(ENTRY_EMAIL, formData.email);
+        body.append(ENTRY_MESSAGE, formData.message);
 
-      await fetch(FORM_ACTION, {
+        await fetch(endpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          },
+          body: body.toString(),
+        });
+
+        setFormData({ name: '', email: '', message: '' });
+        setTemporaryStatus('unconfirmed');
+        return;
+      }
+
+      const response = await fetch(endpoint, {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: body.toString(),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       });
 
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setFormData({ name: '', email: '', message: '' });
-      setStatus('success');
-      window.setTimeout(() => setStatus('idle'), 5000);
+      setTemporaryStatus('success');
     } catch {
-      setStatus('error');
-      window.setTimeout(() => setStatus('idle'), 5000);
+      setTemporaryStatus('error');
     }
   };
 
@@ -145,6 +202,8 @@ export default function ContactPage() {
           >
             {status === 'success' && t('contact_status_success')}
             {status === 'error' && t('contact_status_error')}
+            {status === 'config_error' && t('contact_status_config_error')}
+            {status === 'unconfirmed' && t('contact_status_unconfirmed')}
             {status === 'sending' && t('contact_sending')}
           </p>
         )}

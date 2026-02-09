@@ -14,6 +14,11 @@ export default function BlogPage() {
       <p className="animate-fade-in-up animate-delay-1" style={{ color: '#666', marginBottom: '3rem', marginTop: '1rem' }}>
         {t('blog_desc')}
       </p>
+      {language === 'zh' && (
+        <p style={{ color: '#666', marginTop: '-2rem', marginBottom: '2rem' }}>
+          {t('content_notice_en_fallback')}
+        </p>
+      )}
 
       <div className="blog-list">
         {posts.map((post, i) => (

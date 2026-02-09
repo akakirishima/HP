@@ -70,6 +70,11 @@ export default function ProjectDetailPage() {
                 <p style={{ fontSize: '1.15rem', color: '#666', marginBottom: '1.5rem' }}>
                     {language === 'ja' ? project.desc_ja : language === 'ko' ? project.desc_ko : project.desc_en}
                 </p>
+                {language === 'zh' && (
+                    <p style={{ color: '#666', marginTop: '-0.5rem', marginBottom: '1.5rem' }}>
+                        {t('content_notice_en_fallback')}
+                    </p>
+                )}
 
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                     {project.tags.map(tag => (

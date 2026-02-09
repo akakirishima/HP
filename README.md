@@ -14,7 +14,11 @@ This is a React + TypeScript application scaffolded with Vite. The app has been 
 
 - The root element is validated in `src/main.tsx` to avoid null assertion crashes.
 - Choose and set a project license in `package.json` (currently `UNLICENSED`). If you decide on an open-source license (e.g., MIT), also add a `LICENSE` file at the repo root.
-- Optional envs: set `VITE_GA_ID` for Google Analytics, `VITE_SITE_URL` for `robots.txt`/`sitemap.xml`, and `VITE_CONTACT_ENDPOINT`/`VITE_CONTACT_EMAIL` for the contact form.
+- Optional envs: set `VITE_GA_ID` for Google Analytics and `VITE_SITE_URL` for `robots.txt`/`sitemap.xml`.
+- Contact form envs: set `VITE_CONTACT_ENDPOINT` and (optionally) `VITE_CONTACT_EMAIL`.
+- `VITE_CONTACT_ENDPOINT` behavior:
+  - If it is a CORS-enabled API endpoint, the app verifies response status and shows success/error accurately.
+  - If it is a Google Forms endpoint, the app submits with `no-cors`; delivery cannot be verified by the browser, so it shows an "unconfirmed" status.
 
 ---
 

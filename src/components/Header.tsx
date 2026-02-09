@@ -20,6 +20,7 @@ export default function Header({ left, right, activeHref }: HeaderProps) {
     { code: 'ja', shortLabel: 'JP', label: '日本語' },
     { code: 'en', shortLabel: 'EN', label: 'English' },
     { code: 'ko', shortLabel: 'KR', label: '한국어' },
+    { code: 'zh', shortLabel: 'ZH', label: '简体中文' },
   ];
 
   const links = navRoutes;

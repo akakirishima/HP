@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
-const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL as string | undefined;
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL?.trim();
 const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined;
 const CONTACT_GOOGLE_ENTRY_NAME = import.meta.env.VITE_CONTACT_GOOGLE_ENTRY_NAME?.trim();
 const CONTACT_GOOGLE_ENTRY_EMAIL = import.meta.env.VITE_CONTACT_GOOGLE_ENTRY_EMAIL?.trim();
@@ -256,24 +256,25 @@ export default function ContactPage() {
         )}
       </form>
 
-      {/* Contact Info */}
-      <div className="animate-fade-in-up animate-delay-3" style={{ marginTop: '3rem', textAlign: 'center' }}>
-        <p style={{ color: '#666', fontSize: '0.95rem' }}>
-          {t('contact_direct_email')}
-        </p>
-        <a
-          href={`mailto:${CONTACT_EMAIL ?? 'hello@example.com'}`}
-          style={{
-            color: '#004098',
-            fontWeight: 600,
-            fontSize: '1.1rem',
-            display: 'inline-block',
-            marginTop: '0.5rem'
-          }}
-        >
-          {CONTACT_EMAIL ?? 'hello@example.com'}
-        </a>
-      </div>
+      {CONTACT_EMAIL && (
+        <div className="animate-fade-in-up animate-delay-3" style={{ marginTop: '3rem', textAlign: 'center' }}>
+          <p style={{ color: '#666', fontSize: '0.95rem' }}>
+            {t('contact_direct_email')}
+          </p>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            style={{
+              color: '#004098',
+              fontWeight: 600,
+              fontSize: '1.1rem',
+              display: 'inline-block',
+              marginTop: '0.5rem'
+            }}
+          >
+            {CONTACT_EMAIL}
+          </a>
+        </div>
+      )}
     </main>
   );
 }

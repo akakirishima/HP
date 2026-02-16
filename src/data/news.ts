@@ -8,6 +8,12 @@ export type NewsItem = {
 
 export const newsItems: NewsItem[] = [
   {
+    date: '2026.02.16',
+    text_ja: 'AI Agent Challenge 2026 に参加しました',
+    text_en: 'Participated in AI Agent Challenge 2026',
+    text_ko: 'AI Agent Challenge 2026에 참가했습니다',
+  },
+  {
     date: '2026.01.10',
     text_ja: 'ウェブサイトをリニューアルしました',
     text_en: 'Website has been renewed',

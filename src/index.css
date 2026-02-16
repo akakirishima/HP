@@ -1042,9 +1042,82 @@ select:focus-visible {
   color: var(--c-text-sub);
 }
 
-.blog-content p {
+.blog-content > * {
   margin-top: 0;
   margin-bottom: 1.5rem;
+}
+
+.blog-content p {
+  margin-top: 0;
+}
+
+.blog-content h2,
+.blog-content h3,
+.blog-content h4 {
+  color: var(--c-text-main);
+  line-height: 1.4;
+}
+
+.blog-content ul,
+.blog-content ol {
+  padding-left: 1.5rem;
+}
+
+.blog-content li + li {
+  margin-top: 0.35rem;
+}
+
+.blog-content a {
+  color: var(--c-primary);
+  text-decoration: underline;
+}
+
+.blog-content blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: 4px solid rgba(0, 64, 152, 0.3);
+  color: var(--c-text-sub);
+}
+
+.blog-content pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.blog-content :not(pre) > code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: 6px;
+  padding: 0.15rem 0.35rem;
+  font-size: 0.92em;
+}
+
+.blog-content pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: transparent;
+  padding: 0;
+}
+
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+}
+
+.blog-content th,
+.blog-content td {
+  border: 1px solid #dbe2ea;
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+}
+
+.blog-content th {
+  background: #f4f7fb;
+  color: var(--c-text-main);
 }
 
 /* =============================================

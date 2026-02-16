@@ -56,87 +56,37 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-birth</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/ai-agent-challenge-2026</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-kindergarten</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/ali-6920</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-elementary</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/award-gikyu-camp-vol23</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-junior-high</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/award-gikyu-expo-qualifier</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-high-school</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/award-miyazaki-ds-competition</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-miyazaki-university</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/award-miyazaki-hackathon-1st</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/research-thi-thi-zin</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/research-masters-plan</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-masters-completion-plan</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/festival-kinect</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/festival-miyazaki-tower-battle</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/mountain-shiraga</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/mountain-yakushima-miyanoura</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/mountain-shaka</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/mountain-tateyama</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/mountain-kaimon</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/mountain-yufu</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/award-miyazaki-hackathon-2nd</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -156,12 +106,97 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/part-time-lavie-en-rose</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/design-system-consistency</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/part-time-wowd-plus</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/designing-for-ai</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/education-birth</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/education-elementary</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/education-high-school</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/education-junior-high</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/education-kindergarten</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/education-masters-completion-plan</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/education-miyazaki-university</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/festival-kinect</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/festival-miyazaki-tower-battle</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/iup-ali-online</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/mountain-kaimon</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/mountain-shaka</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/mountain-shiraga</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/mountain-tateyama</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/mountain-yakushima-miyanoura</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/mountain-yufu</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/part-time-lavie-en-rose</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -176,52 +211,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/award-gikyu-expo-qualifier</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/award-gikyu-camp-vol23</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/award-miyazaki-hackathon-2nd</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/award-miyazaki-ds-competition</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/award-miyazaki-hackathon-1st</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/step3-suncheon</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/ali-6920</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/iup-ali-online</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/ai-agent-challenge-2026</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/designing-for-ai</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/part-time-wowd-plus</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -231,7 +221,17 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/design-system-consistency</loc>
+    <loc>https://hp-six-beryl.vercel.app/blog/research-masters-plan</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/research-thi-thi-zin</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/blog/step3-suncheon</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>

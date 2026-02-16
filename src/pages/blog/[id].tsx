@@ -1,4 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getPostById } from '../../data/posts';
 import SEO from '../../components/SEO';
@@ -26,21 +28,7 @@ export default function BlogDetailPage() {
   const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
   const normalized = siteUrl?.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
   const canonical = normalized ? `${normalized}/blog/${post.id}` : undefined;
-
-  const renderParagraph = (text: string) => {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const parts = text.split(urlRegex);
-    return parts.map((part, index) => {
-      if (urlRegex.test(part)) {
-        return (
-          <a key={`link-${index}`} href={part} target="_blank" rel="noopener noreferrer">
-            {part}
-          </a>
-        );
-      }
-      return <span key={`text-${index}`}>{part}</span>;
-    });
-  };
+  const markdown = language === 'ja' ? post.content_ja : language === 'ko' ? post.content_ko : post.content_en;
 
   return (
     <main className="section page page--medium">
@@ -65,9 +53,19 @@ export default function BlogDetailPage() {
         </div>
         <h1 className="blog-title">{title}</h1>
         <div className="blog-content">
-          {(language === 'ja' ? post.content_ja : language === 'ko' ? post.content_ko : post.content_en).map((paragraph, i) => (
-            <p key={i}>{renderParagraph(paragraph)}</p>
-          ))}
+          <ReactMarkdown
+            skipHtml
+            remarkPlugins={[remarkGfm]}
+            components={{
+              a: ({ href, children }) => (
+                <a href={href} target="_blank" rel="noopener noreferrer">
+                  {children}
+                </a>
+              ),
+            }}
+          >
+            {markdown}
+          </ReactMarkdown>
         </div>
       </div>
     </main>

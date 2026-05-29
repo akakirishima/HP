@@ -96,148 +96,280 @@ Features include Japanese/English switching, gradient-based UI, and background a
         ],
         tags: ['React', 'Vite', 'Three.js', 'i18n'],
         color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        liveUrl: 'https://hp-six-beryl.vercel.app',
+        repoUrl: 'https://github.com/akakirishima/HP',
         year: '2026',
         image: '/og/project-portfolio-site.svg'
     },
     {
-        id: 'task-manager-pro',
-        title: 'Task Manager Pro',
-        desc_ja: 'チーム向けのタスク管理アプリ。リアルタイム同期とカンバンボード機能を搭載。',
-        desc_en: 'A team task management app with real-time sync and Kanban board features.',
-        desc_ko: '팀을 위한 작업 관리 앱. 실시간 동기화와 칸반 보드 기능을 탑재.',
-        longDesc_ja: `チームでの業務効率化を目的としたタスク管理アプリケーションです。
+        id: 'cocktail-memory',
+        title: 'cocktail-memory',
+        desc_ja: 'カクテルのレシピを選択式で覚える学習アプリ。',
+        desc_en: 'A learning app for memorizing cocktail recipes through selectable quiz-style practice.',
+        desc_ko: '선택식 퀴즈로 칵테일 레시피를 외우는 학습 앱입니다.',
+        longDesc_ja: `cocktail-memoryは、カクテルのレシピを「グラス」「作り方」「材料」「分量」などの選択式で覚える学習アプリです。
 
-カンバン形式のドラッグ＆ドロップ、リアルタイム同期、期限通知、ダッシュボード分析などの機能を備えています。`,
-        longDesc_en: `A task management application designed to improve team productivity.
+練習画面では画像付きのパレットから材料を選び、レシピ知識を反復しながら確認できます。
+Next.js / React / TypeScript で構成し、レシピデータのカタログ生成やUIテスト用スクリプトも用意しています。`,
+        longDesc_en: `cocktail-memory is a learning app for memorizing cocktail recipes by selecting the glass, method, ingredients, and amounts.
 
-Features include Kanban-style drag & drop, real-time sync, deadline notifications, and dashboard analytics.`,
-        longDesc_ko: `팀의 업무 효율화를 목표로 한 작업 관리 애플리케이션입니다.
+The practice screen uses image-backed palettes so users can repeatedly check recipe knowledge through interaction.
+It is built with Next.js, React, and TypeScript, with scripts for generating recipe catalogs and checking UI behavior.`,
+        longDesc_ko: `cocktail-memory는 글라스, 제조 방식, 재료, 분량을 선택하면서 칵테일 레시피를 외우는 학습 앱입니다.
 
-칸반 드래그 앤 드롭, 실시간 동기화, 마감 알림, 대시보드 분석 기능을 갖추었습니다.`,
+연습 화면에서는 이미지가 있는 팔레트에서 재료를 선택하며 반복적으로 레시피 지식을 확인할 수 있습니다.
+Next.js / React / TypeScript로 구성했고, 레시피 카탈로그 생성과 UI 동작 확인 스크립트도 포함했습니다.`,
         challenges_ja: [
-            'ドラッグ＆ドロップのライブラリ選定と実装',
-            'Firebaseのリアルタイムリスナーの最適化',
-            '通知システムのスケジューリング'
+            'レシピデータを選択式UIで扱いやすいカタログ構造に整理した',
+            '画像付きの材料パレットを、スマホでも操作しやすいレイアウトに調整した',
+            'Next.jsのビルド前処理でレシピカタログを生成する構成にした'
         ],
         challenges_en: [
-            'Selecting and implementing the drag & drop library',
-            'Optimizing Firebase real-time listeners',
-            'Scheduling the notification system'
+            'Organized recipe data into a catalog structure suitable for selectable UI flows',
+            'Adjusted the image-backed ingredient palette for comfortable mobile interaction',
+            'Built a prebuild flow that generates the recipe catalog before the Next.js build'
         ],
         challenges_ko: [
-            '드래그 앤 드롭 라이브러리 선정과 구현',
-            'Firebase 실시간 리스너 최적화',
-            '알림 시스템 스케줄링'
+            '레시피 데이터를 선택식 UI에 맞는 카탈로그 구조로 정리했습니다',
+            '이미지 기반 재료 팔레트를 모바일에서도 조작하기 쉽게 조정했습니다',
+            'Next.js 빌드 전에 레시피 카탈로그를 생성하는 구성으로 만들었습니다'
         ],
-        tags: ['Next.js', 'Firebase', 'Tailwind'],
-        color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-        year: '2025',
-        image: '/og/project-task-manager-pro.svg'
+        tags: ['Next.js', 'React', 'TypeScript'],
+        color: 'linear-gradient(135deg, #7c2d12 0%, #f97316 55%, #fde68a 100%)',
+        liveUrl: 'https://cocktail-memory-tube.vercel.app',
+        repoUrl: 'https://github.com/akakirishima/cocktail-memory',
+        year: '2026'
     },
     {
-        id: 'ecommerce-platform',
-        title: 'E-Commerce Platform',
-        desc_ja: 'スケーラブルなECプラットフォーム。決済統合とダッシュボード分析機能を実装。',
-        desc_en: 'A scalable e-commerce platform with payment integration and analytics dashboard.',
-        desc_ko: '확장 가능한 이커머스 플랫폼. 결제 통합과 대시보드 분석 기능을 구현.',
-        longDesc_ja: `個人事業主向けのECプラットフォームです。
+        id: 'hellonewme',
+        title: 'Hellonewme',
+        desc_ja: 'AIキャラクターとの対話から日記と自己成長の記録が育つ新しい日記アプリ。',
+        desc_en: 'A new diary app where conversations with an AI character grow into daily reflections and self-growth records.',
+        desc_ko: 'AI 캐릭터와의 대화가 일기와 자기 성장 기록으로 이어지는 새로운 일기 앱입니다.',
+        longDesc_ja: `Hellonewmeは、AIキャラクターとの会話、音声、写真を通じて、日々の行動や気持ちを自然に記録できる新しい日記アプリです。
 
-Stripe決済統合、商品管理、注文履歴、売上分析ダッシュボードなどを実装しています。`,
-        longDesc_en: `An e-commerce platform for small business owners.
+会話内容は日次サマリーとして再構成され、翌朝のひとこと、日記、キャラクター画像の変化として返ってきます。
+「記録を書く」負担を減らし、自分の変化をキャラクターの成長として見返せる体験を目指しました。`,
+        longDesc_en: `Hellonewme is a new diary app that helps users naturally record daily actions and emotions through conversations, voice, and photos with an AI character.
 
-Features Stripe payment integration, product management, order history, and sales analytics dashboard.`,
-        longDesc_ko: `개인 사업자를 위한 이커머스 플랫폼입니다.
+Conversations are reconstructed into daily summaries and returned as morning messages, diary entries, and changes in the character's image.
+The goal is to reduce the burden of writing records and make self-growth visible as the character evolves.`,
+        longDesc_ko: `Hellonewme는 AI 캐릭터와의 대화, 음성, 사진을 통해 매일의 행동과 감정을 자연스럽게 기록할 수 있는 새로운 일기 앱입니다.
 
-Stripe 결제 통합, 상품 관리, 주문 내역, 매출 분석 대시보드 등을 구현했습니다.`,
+대화 내용은 일일 요약으로 재구성되고, 다음 날 아침의 한마디, 일기, 캐릭터 이미지 변화로 돌아옵니다.
+기록을 쓰는 부담을 줄이고, 자신의 변화를 캐릭터의 성장으로 돌아볼 수 있는 경험을 목표로 했습니다.`,
         challenges_ja: [
-            'Stripe Webhookの実装とテスト',
-            'PostgreSQLでの複雑なクエリ最適化',
-            'セキュリティ(XSS, CSRF)対策'
+            'FlutterアプリとCloud Run上のTypeScript / Expressバックエンドを連携した',
+            'Gemini、Speech-to-Text、Text-to-Speechを組み合わせ、チャット・音声・日記生成をつないだ',
+            '03:00 JSTを日付境界にして、深夜の振り返りも自然に扱える日記体験を設計した',
+            '会話や写真の内容を日次サマリー、吹き出し、キャラクター画像更新へ反映する流れを作った'
         ],
         challenges_en: [
-            'Implementing and testing Stripe Webhooks',
-            'Optimizing complex PostgreSQL queries',
-            'Security measures (XSS, CSRF prevention)'
+            'Connected a Flutter app with a TypeScript / Express backend running on Cloud Run',
+            'Combined Gemini, Speech-to-Text, and Text-to-Speech to link chat, voice, and diary generation',
+            'Designed a diary experience with a 03:00 JST date boundary so late-night reflections still feel natural',
+            'Built a flow that reflects conversations and photos into daily summaries, bubbles, and character image updates'
         ],
         challenges_ko: [
-            'Stripe Webhook 구현과 테스트',
-            'PostgreSQL 복잡한 쿼리 최적화',
-            '보안 대책(XSS, CSRF)'
+            'Flutter 앱과 Cloud Run의 TypeScript / Express 백엔드를 연동했습니다',
+            'Gemini, Speech-to-Text, Text-to-Speech를 조합해 채팅, 음성, 일기 생성을 연결했습니다',
+            '03:00 JST를 날짜 경계로 두어 심야 회고도 자연스럽게 다루는 일기 경험을 설계했습니다',
+            '대화와 사진 내용을 일일 요약, 말풍선, 캐릭터 이미지 업데이트로 반영하는 흐름을 만들었습니다'
         ],
-        tags: ['Vue.js', 'Node.js', 'PostgreSQL'],
-        color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-        year: '2024',
-        image: '/og/project-ecommerce-platform.svg'
+        tags: ['Flutter', 'Dart', 'Firebase', 'Gemini', 'Cloud Run'],
+        color: 'linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #38bdf8 100%)',
+        liveUrl: 'https://hello-new-me.vercel.app',
+        year: '2026'
     },
     {
-        id: 'ai-chat-assistant',
-        title: 'AI Chat Assistant',
-        desc_ja: 'GPTベースのAIチャットアシスタント。コンテキストを理解した自然な会話を実現。',
-        desc_en: 'A GPT-based AI chat assistant with context-aware natural conversations.',
-        desc_ko: 'GPT 기반 AI 채팅 어시스턴트. 문맥을 이해한 자연스러운 대화를 구현.',
-        longDesc_ja: `OpenAI APIを活用したAIチャットアシスタントです。
+        id: 'sample-reels',
+        title: 'sample-reels',
+        desc_ja: 'サンプルをリール形式で表示するFlutterアプリ。',
+        desc_en: 'A Flutter app that displays samples in a reels-style interface.',
+        desc_ko: '샘플을 릴스 형식으로 보여주는 Flutter 앱입니다.',
+        longDesc_ja: `sample-reelsは、技育ハッカソンでチーム開発した、サンプルをリール形式で表示するアプリです。
 
-会話履歴を保持し、文脈を理解した自然な対話が可能です。RAG（検索拡張生成）による社内ドキュメント参照機能も実装。`,
-        longDesc_en: `An AI chat assistant powered by OpenAI API.
+Flutter / Dart を使って、スマホで見やすい縦スクロール型の体験を作ることを目指しました。
+Firebase 連携を見据え、データ管理やチーム開発のブランチ運用も含めて設計しています。`,
+        longDesc_en: `sample-reels is a team-developed hackathon app that displays samples in a reels-style interface.
 
-Maintains conversation history for context-aware natural dialogue. Also features RAG (Retrieval Augmented Generation) for internal document reference.`,
-        longDesc_ko: `OpenAI API를 활용한 AI 채팅 어시스턴트입니다.
+Built with Flutter and Dart, it focuses on a mobile-friendly vertical browsing experience.
+The project was designed with Firebase-backed data management and team branch workflows in mind.`,
+        longDesc_ko: `sample-reels는 기큐 해커톤에서 팀으로 개발한, 샘플을 릴스 형식으로 보여주는 앱입니다.
 
-대화 기록을 유지해 문맥을 이해한 자연스러운 대화를 제공합니다. RAG(검색 확장 생성)로 사내 문서 참조 기능도 구현했습니다.`,
+Flutter / Dart를 사용해 모바일에서 보기 쉬운 세로 스크롤 경험을 만드는 것을 목표로 했습니다.
+Firebase 연동을 고려해 데이터 관리와 팀 개발 브랜치 운영까지 포함해 설계했습니다.`,
         challenges_ja: [
-            'プロンプトエンジニアリングの試行錯誤',
-            'トークン数制限への対応',
-            'RAGのベクトル検索精度向上'
+            'Flutterでリール形式の縦スクロールUIを構成した',
+            'チーム開発を前提に、develop / feature ブランチ運用を整理した',
+            'Firebase連携を見据えたデータ管理の構成を検討した'
         ],
         challenges_en: [
-            'Trial and error in prompt engineering',
-            'Handling token limit constraints',
-            'Improving RAG vector search accuracy'
+            'Built a reels-style vertical scrolling UI with Flutter',
+            'Organized develop and feature branch workflows for team development',
+            'Planned a data-management structure with Firebase integration in mind'
         ],
         challenges_ko: [
-            '프롬프트 엔지니어링 시행착오',
-            '토큰 제한 대응',
-            'RAG 벡터 검색 정확도 개선'
+            'Flutter로 릴스 형식의 세로 스크롤 UI를 구성했습니다',
+            '팀 개발을 전제로 develop / feature 브랜치 운영을 정리했습니다',
+            'Firebase 연동을 고려한 데이터 관리 구성을 검토했습니다'
         ],
-        tags: ['Python', 'OpenAI', 'React'],
-        color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-        year: '2025',
-        image: '/og/project-ai-chat-assistant.svg'
+        tags: ['Flutter', 'Dart', 'Firebase'],
+        color: 'linear-gradient(135deg, #0ea5e9 0%, #2563eb 55%, #7c3aed 100%)',
+        repoUrl: 'https://github.com/taishi29/sample-reels',
+        year: '2025'
     },
     {
-        id: 'design-system',
-        title: 'Design System',
-        desc_ja: '企業向けのコンポーネントライブラリとデザインシステム。',
-        desc_en: 'A comprehensive component library and design system for enterprises.',
-        desc_ko: '기업을 위한 컴포넌트 라이브러리와 디자인 시스템.',
-        longDesc_ja: `企業内で統一されたUIを実現するためのデザインシステムです。
+        id: 'comchecker',
+        title: 'ComChecker',
+        desc_ja: '宮崎の企業をgood / badで選び、自分の好みに合う企業を見つけるWebサイト。',
+        desc_en: 'A web app for discovering Miyazaki companies by choosing good or bad preferences.',
+        desc_ko: '미야자키 기업을 good / bad로 선택하며 취향에 맞는 기업을 찾는 웹사이트입니다.',
+        longDesc_ja: `ComCheckerは、宮崎の企業を表示し、good / bad の選択を通じて自分の好みに合う企業を探すハッカソン制作のWebサイトです。
 
-Storybookでコンポーネントをドキュメント化し、Figmaとの連携でデザイナーとの協業を効率化しています。`,
-        longDesc_en: `A design system to achieve unified UI across the enterprise.
+バックエンドは Django、データベースは SQLite を利用し、フロント側は React を想定した構成です。
+企業選びを直感的な操作に落とし込むことを目的に、初期バージョンとして実装しました。`,
+        longDesc_en: `ComChecker is a hackathon web app for browsing Miyazaki companies and finding companies that match personal preferences through good / bad choices.
 
-Components are documented with Storybook, and Figma integration streamlines collaboration with designers.`,
-        longDesc_ko: `기업 내에서 통일된 UI를 구현하기 위한 디자인 시스템입니다.
+It uses Django on the backend and SQLite for the database, with a frontend structure intended for React.
+The initial version focuses on turning company discovery into a simple, intuitive interaction.`,
+        longDesc_ko: `ComChecker는 미야자키 기업을 보여주고 good / bad 선택을 통해 취향에 맞는 기업을 찾는 해커톤 제작 웹사이트입니다.
 
-Storybook으로 컴포넌트를 문서화하고, Figma 연동으로 디자이너 협업을 효율화했습니다.`,
+백엔드는 Django, 데이터베이스는 SQLite를 사용했고 프론트엔드는 React 구성을 전제로 했습니다.
+기업 탐색을 직관적인 조작으로 바꾸는 것을 목표로 초기 버전을 구현했습니다.`,
         challenges_ja: [
-            'コンポーネントのAPI設計（props設計）',
-            'アクセシビリティ(a11y)への対応',
-            'バージョン管理とBreaking Changesの扱い'
+            'DjangoとSQLiteで企業情報を扱う基礎構成を作った',
+            'good / bad の選択で好みを絞り込む体験を設計した',
+            'ハッカソンの短時間でバックエンドとフロントエンドの役割を整理した'
         ],
         challenges_en: [
-            'Component API design (props design)',
-            'Accessibility (a11y) compliance',
-            'Version management and handling Breaking Changes'
+            'Built the basic Django and SQLite structure for handling company information',
+            'Designed a preference-narrowing experience using good / bad choices',
+            'Separated backend and frontend responsibilities under hackathon time constraints'
         ],
         challenges_ko: [
-            '컴포넌트 API 설계(props 설계)',
-            '접근성(a11y) 대응',
-            '버전 관리와 Breaking Changes 처리'
+            'Django와 SQLite로 기업 정보를 다루는 기본 구성을 만들었습니다',
+            'good / bad 선택으로 취향을 좁혀가는 경험을 설계했습니다',
+            '해커톤의 짧은 시간 안에서 백엔드와 프론트엔드 역할을 정리했습니다'
         ],
-        tags: ['Storybook', 'Figma', 'TypeScript'],
-        color: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-        year: '2024',
-        image: '/og/project-design-system.svg'
+        tags: ['Django', 'React', 'SQLite', 'Python'],
+        color: 'linear-gradient(135deg, #14532d 0%, #16a34a 55%, #bbf7d0 100%)',
+        repoUrl: 'https://github.com/taishi29/ComChecker',
+        year: '2024'
+    },
+    {
+        id: 'helloworld-lab-system',
+        title: 'HelloWorld',
+        desc_ja: '研究室向けの在室・勤怠・日誌管理システム。',
+        desc_en: 'A lab presence, attendance, and daily log management system.',
+        desc_ko: '연구실용 재실, 근태, 일지 관리 시스템입니다.',
+        longDesc_ja: `HelloWorldは、研究室内で使うことを想定した在室状況・勤怠・日誌管理システムです。
+
+フロントエンドは Vite + React + TypeScript、バックエンドは FastAPI + SQLite で構成しています。
+Raspberry Pi 上で動かし、研究室LAN内からアクセスする運用を前提に、ログイン、在室状態、勤怠、日誌を扱えるようにしました。`,
+        longDesc_en: `HelloWorld is a presence, attendance, and daily log management system designed for use inside a university lab.
+
+The frontend is built with Vite, React, and TypeScript, while the backend uses FastAPI and SQLite.
+It is intended to run on a Raspberry Pi and be accessed from the lab LAN, covering login, presence status, attendance, and daily logs.`,
+        longDesc_ko: `HelloWorld는 연구실 내부에서 사용하는 것을 전제로 한 재실, 근태, 일지 관리 시스템입니다.
+
+프론트엔드는 Vite + React + TypeScript, 백엔드는 FastAPI + SQLite로 구성했습니다.
+Raspberry Pi에서 실행하고 연구실 LAN 안에서 접근하는 운영을 전제로 로그인, 재실 상태, 근태, 일지를 다룰 수 있게 했습니다.`,
+        challenges_ja: [
+            'ReactフロントエンドとFastAPIバックエンドを分離して設計した',
+            'Raspberry Piと研究室LAN内運用を前提にアクセス方法を整理した',
+            '管理者とメンバーの権限を分け、在室・勤怠・日誌の基本機能を構成した'
+        ],
+        challenges_en: [
+            'Separated the React frontend and FastAPI backend cleanly',
+            'Designed the access flow around Raspberry Pi deployment inside a lab LAN',
+            'Structured admin/member permissions and core presence, attendance, and log features'
+        ],
+        challenges_ko: [
+            'React 프론트엔드와 FastAPI 백엔드를 분리해 설계했습니다',
+            'Raspberry Pi와 연구실 LAN 내부 운영을 전제로 접근 방식을 정리했습니다',
+            '관리자와 멤버 권한을 나누고 재실, 근태, 일지의 기본 기능을 구성했습니다'
+        ],
+        tags: ['React', 'TypeScript', 'FastAPI', 'SQLite'],
+        color: 'linear-gradient(135deg, #0f766e 0%, #14b8a6 55%, #99f6e4 100%)',
+        repoUrl: 'https://github.com/akakirishima/HelloWorld',
+        year: '2026'
+    },
+    {
+        id: 'record-baby-in-nicu',
+        title: 'recordBabyinNICU',
+        desc_ja: 'Intel RealSense L515でDepth、IR、RGBを記録するPythonスクリプト群。',
+        desc_en: 'Python scripts for recording Depth, IR, and RGB streams with Intel RealSense L515.',
+        desc_ko: 'Intel RealSense L515로 Depth, IR, RGB 스트림을 기록하는 Python 스크립트입니다.',
+        longDesc_ja: `recordBabyinNICUは、Intel RealSense L515 を使って NICU 環境で Depth、IR、RGB の各ストリームを記録するための Python スクリプト群です。
+
+Depth は HDF5、IR / RGB は MP4 として保存し、一定時間ごとにファイルを分割できる構成にしています。
+公開リポジトリでは録画コードのみを扱い、患者データや録画済みデータセットは含めていません。`,
+        longDesc_en: `recordBabyinNICU is a set of Python scripts for recording Depth, IR, and RGB streams in a NICU environment using Intel RealSense L515.
+
+Depth is saved as HDF5 while IR and RGB are saved as MP4, with support for time-based file splitting.
+The public repository contains recording code only and does not include patient data or recorded datasets.`,
+        longDesc_ko: `recordBabyinNICU는 Intel RealSense L515를 사용해 NICU 환경에서 Depth, IR, RGB 스트림을 기록하기 위한 Python 스크립트입니다.
+
+Depth는 HDF5, IR/RGB는 MP4로 저장하며, 일정 시간마다 파일을 분할할 수 있는 구성입니다.
+공개 저장소에는 녹화 코드만 포함하고 환자 데이터나 녹화 데이터셋은 포함하지 않았습니다.`,
+        challenges_ja: [
+            'Depth、IR、RGBの複数ストリームを同時に扱う録画処理を構成した',
+            '欠損リスクを抑えるため、安定優先プロファイルと保存優先度を設計した',
+            '研究用途を想定し、出力フォルダとセッション情報の保存形式を整理した'
+        ],
+        challenges_en: [
+            'Built recording logic that handles multiple Depth, IR, and RGB streams at once',
+            'Designed stable profiles and save priorities to reduce dropped-frame risk',
+            'Organized output folders and session metadata for research use'
+        ],
+        challenges_ko: [
+            'Depth, IR, RGB 복수 스트림을 동시에 다루는 녹화 처리를 구성했습니다',
+            '프레임 누락 위험을 줄이기 위해 안정 우선 프로파일과 저장 우선순위를 설계했습니다',
+            '연구 용도를 고려해 출력 폴더와 세션 정보 저장 형식을 정리했습니다'
+        ],
+        tags: ['Python', 'RealSense', 'OpenCV', 'HDF5'],
+        color: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 52%, #93c5fd 100%)',
+        repoUrl: 'https://github.com/akakirishima/recordBabyinNICU',
+        year: '2025'
+    },
+    {
+        id: 'my-app',
+        title: 'my-app',
+        desc_ja: 'Dockerで動くフロントエンド + バックエンド構成のアプリ。',
+        desc_en: 'A Docker-based full-stack app with separate frontend and backend services.',
+        desc_ko: 'Docker로 실행되는 프론트엔드 + 백엔드 구성의 앱입니다.',
+        longDesc_ja: `my-appは、Docker Compose だけで起動できるフロントエンド + バックエンド構成のアプリです。
+
+フロントエンドとAPIを別サービスとして分け、ローカルに Node や Python を直接入れなくても動かせるようにしています。
+README では初回セットアップ、2回目以降の起動、ログ確認、依存追加、ポート競合時の対応まで整理しています。`,
+        longDesc_en: `my-app is a full-stack app that can be started with Docker Compose alone.
+
+The frontend and API are split into separate services so it can run without installing Node or Python directly on the local machine.
+The README documents initial setup, repeat startup, logs, dependency installation, and port-conflict handling.`,
+        longDesc_ko: `my-app은 Docker Compose만으로 실행할 수 있는 프론트엔드 + 백엔드 구성의 앱입니다.
+
+프론트엔드와 API를 별도 서비스로 분리해 로컬에 Node나 Python을 직접 설치하지 않아도 실행할 수 있게 했습니다.
+README에는 초기 설정, 두 번째 이후 실행, 로그 확인, 의존성 추가, 포트 충돌 대응까지 정리했습니다.`,
+        challenges_ja: [
+            'Docker Composeでフロントエンドとバックエンドを一括起動できる構成にした',
+            'macOSのポート競合を避けるため、API公開ポートを整理した',
+            'チームメンバーが迷わず起動できるよう、READMEに運用手順をまとめた'
+        ],
+        challenges_en: [
+            'Created a Docker Compose setup that starts both frontend and backend services',
+            'Adjusted exposed API ports to avoid common macOS port conflicts',
+            'Documented operational steps so other developers can start the project smoothly'
+        ],
+        challenges_ko: [
+            'Docker Compose로 프론트엔드와 백엔드를 함께 실행할 수 있게 구성했습니다',
+            'macOS의 포트 충돌을 피하기 위해 API 공개 포트를 정리했습니다',
+            '팀원이 쉽게 실행할 수 있도록 README에 운영 절차를 정리했습니다'
+        ],
+        tags: ['Docker', 'React', 'TypeScript', 'Python'],
+        color: 'linear-gradient(135deg, #111827 0%, #4b5563 52%, #d1d5db 100%)',
+        repoUrl: 'https://github.com/akakirishima/my-app',
+        year: '2025'
     },
 ];
 

@@ -1,12 +1,14 @@
 // import matter from 'gray-matter';
 
-function parseFrontmatter(source: string) {
+type FrontmatterData = Record<string, unknown>;
+
+function parseFrontmatter(source: string): { data: FrontmatterData; content: string } {
   const match = source.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)$/);
-  if (!match) return { data: {} as any, content: source };
+  if (!match) return { data: {}, content: source };
 
   const frontmatterRaw = match[1];
   const content = match[2];
-  const data: Record<string, any> = {};
+  const data: FrontmatterData = {};
 
   frontmatterRaw.split('\n').forEach(line => {
     const parts = line.split(':');
@@ -22,7 +24,7 @@ function parseFrontmatter(source: string) {
       try {
         data[key] = JSON.parse(value);
         return;
-      } catch (e) {
+      } catch {
         console.warn('Failed to parse array:', value);
       }
     } else if (!isNaN(Number(value))) {

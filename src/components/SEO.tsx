@@ -17,14 +17,14 @@ export default function SEO({
     const { language } = useLanguage();
     const defaultDescription =
         language === 'ja'
-            ? "Web開発者Kirishimaのポートフォリオサイトです。制作実績やブログを掲載しています。"
+            ? "Web開発者akakirisimaのポートフォリオサイトです。制作実績やブログを掲載しています。"
             : language === 'ko'
-            ? "웹 개발자 Kirishima의 포트폴리오 사이트입니다. 제작 실적과 블로그 글을 소개합니다."
+            ? "웹 개발자 akakirisima의 포트폴리오 사이트입니다. 제작 실적과 블로그 글을 소개합니다."
             : language === 'zh'
-            ? "这是 Web 开发者 Kirishima 的作品集网站，收录项目作品与博客文章。"
-            : "Kirishima's portfolio site featuring projects and blog posts about web development.";
+            ? "这是 Web 开发者 akakirisima 的作品集网站，收录项目作品与博客文章。"
+            : "akakirisima's portfolio site featuring projects and blog posts about web development.";
     const resolvedDescription = description ?? defaultDescription;
-    const siteTitle = "Kirishima's Portfolio";
+    const siteTitle = "akakirisima";
     const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
     const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
     const normalizedSiteUrl = siteUrl?.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;

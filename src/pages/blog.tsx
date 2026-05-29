@@ -1,7 +1,6 @@
 // Blog page
-import { Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
-import { posts } from "../data/posts";
+import { featuredAppearances } from "../data/featuredAppearances";
 
 export default function BlogPage() {
   const { t, language } = useLanguage();
@@ -21,31 +20,29 @@ export default function BlogPage() {
       )}
 
       <div className="blog-list">
-        {posts.map((post, i) => (
-          <Link
-            key={post.id}
-            to={`/blog/${post.id}`}
+        {featuredAppearances.map((item, i) => (
+          <a
+            key={item.href}
+            href={item.href}
             className="blog-card animate-fade-in-up"
             style={{ animationDelay: `${0.1 * i}s` }}
           >
             <div className="blog-meta">
-              <span className="blog-date">{post.date}</span>
+              <span className="blog-date">{item.date}</span>
               <div className="blog-tags">
-                {post.tags.map((tag) => (
-                  <span key={tag} className="tag">{tag}</span>
-                ))}
+                <span className="tag">{item.source}</span>
               </div>
             </div>
             <h3 className="blog-title">
-              {language === 'ja' ? post.title_ja : language === 'ko' ? post.title_ko : post.title_en}
+              {item.title[language]}
             </h3>
             <p className="blog-excerpt">
-              {language === 'ja' ? post.excerpt_ja : language === 'ko' ? post.excerpt_ko : post.excerpt_en}
+              {item.description[language]}
             </p>
             <span className="blog-link">
-              {t('blog_read_more')}
+              {t('home_featured_link')}
             </span>
-          </Link>
+          </a>
         ))}
       </div>
     </main>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from "../contexts/LanguageContext";
+import { featuredAppearances } from '../data/featuredAppearances';
 import { newsItems } from '../data/news';
 
 export default function HomePage() {
@@ -54,7 +55,7 @@ export default function HomePage() {
       <section className="section-profile">
         <div className="profile-container animate-fade-in-up">
           <div className="profile-image-wrapper">
-            <img src="/profile.svg" alt={t('profile_image_alt')} className="profile-image" />
+            <img src="/github-avatar.png" alt={t('profile_image_alt')} className="profile-image" />
           </div>
           <div className="profile-content">
             <h2 className="profile-name">
@@ -115,6 +116,43 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Featured Appearances Section */}
+      <section className="section page page--detail featured-section">
+        <div className="section-heading">
+          <h2 className="section-title">
+            {t('home_featured_title')}
+          </h2>
+          <p className="section-lead">
+            {t('home_featured_desc')}
+          </p>
+        </div>
+
+        <div className="featured-grid">
+          {featuredAppearances.map((item, i) => (
+            <a
+              key={item.href}
+              className="featured-card animate-fade-in-up"
+              href={item.href}
+              style={{ animationDelay: `${0.1 * i}s` }}
+            >
+              <div className="featured-card__meta">
+                <span>{item.date}</span>
+                <span>{item.source}</span>
+              </div>
+              <h3 className="featured-card__title">
+                {item.title[language]}
+              </h3>
+              <p className="featured-card__desc">
+                {item.description[language]}
+              </p>
+              <span className="featured-card__link">
+                {t('home_featured_link')}
+              </span>
+            </a>
+          ))}
         </div>
       </section>
 

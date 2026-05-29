@@ -36,22 +36,37 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/projects/task-manager-pro</loc>
+    <loc>https://hp-six-beryl.vercel.app/projects/cocktail-memory</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/projects/ecommerce-platform</loc>
+    <loc>https://hp-six-beryl.vercel.app/projects/hellonewme</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/projects/ai-chat-assistant</loc>
+    <loc>https://hp-six-beryl.vercel.app/projects/sample-reels</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/projects/design-system</loc>
+    <loc>https://hp-six-beryl.vercel.app/projects/comchecker</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/helloworld-lab-system</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/record-baby-in-nicu</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hp-six-beryl.vercel.app/projects/my-app</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>

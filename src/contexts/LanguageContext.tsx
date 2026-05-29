@@ -13,6 +13,7 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
+    console.log('LanguageProvider rendering...');
     // Get initial language from localStorage or browser preference, default to 'ja'
     const [language, setLanguageState] = useState<Language>(() => {
         if (typeof window !== 'undefined') {

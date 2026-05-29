@@ -1,4 +1,44 @@
-import matter from 'gray-matter';
+// import matter from 'gray-matter';
+
+function parseFrontmatter(source: string) {
+  const match = source.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)$/);
+  if (!match) return { data: {} as any, content: source };
+
+  const frontmatterRaw = match[1];
+  const content = match[2];
+  const data: Record<string, any> = {};
+
+  frontmatterRaw.split('\n').forEach(line => {
+    const parts = line.split(':');
+    if (parts.length < 2) return;
+    const key = parts[0].trim();
+    let value = parts.slice(1).join(':').trim();
+
+    if (value.startsWith('"') && value.endsWith('"')) {
+      value = value.slice(1, -1);
+    } else if (value.startsWith("'") && value.endsWith("'")) {
+      value = value.slice(1, -1);
+    } else if (value.startsWith('[') && value.endsWith(']')) {
+      try {
+        data[key] = JSON.parse(value);
+        return;
+      } catch (e) {
+        console.warn('Failed to parse array:', value);
+      }
+    } else if (!isNaN(Number(value))) {
+      // Check if it is really a number and not a date string like 2023-01-01 (NaN check handles this usually, but 2023-01-01 is NaN)
+      // However, "01" might become 1.
+      // The date field in MD is "2026-02-16" (quoted).
+      // The order field is 33 (unquoted).
+      data[key] = Number(value);
+      return;
+    }
+
+    data[key] = value;
+  });
+
+  return { data, content };
+}
 
 type Locale = 'ja' | 'en' | 'ko';
 
@@ -121,7 +161,7 @@ function loadPostsFromMarkdown(): BlogPost[] {
 
     const folderId = pathMatch[1];
     const fileLocale = pathMatch[2] as Locale;
-    const { data, content } = matter(rawSource);
+    const { data, content } = parseFrontmatter(rawSource);
 
     const id = assertNonEmptyString(data.id, 'id', sourcePath);
     const locale = parseLocale(data.locale, sourcePath);

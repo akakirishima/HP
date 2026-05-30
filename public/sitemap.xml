@@ -136,26 +136,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-elementary</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-high-school</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-junior-high</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hp-six-beryl.vercel.app/blog/education-kindergarten</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://hp-six-beryl.vercel.app/blog/education-masters-completion-plan</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>

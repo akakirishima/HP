@@ -64,9 +64,11 @@ export default function HomePage() {
             <p className="profile-role">
               {t('profile_role')}
             </p>
-            <p className="profile-bio">
-              {t('profile_bio')}
-            </p>
+            <div className="profile-bio">
+              {t('profile_bio').split('\n\n').map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
 
             <button
               className="btn btn-outline"
@@ -77,12 +79,11 @@ export default function HomePage() {
             </button>
 
             <div className={`profile-expanded ${isProfileExpanded ? 'open' : ''}`}>
-              <p className="profile-detail-text">
-                {t('profile_detail')}
-              </p>
-              <Link to="/work" className="btn btn-primary" style={{ padding: '8px 24px', fontSize: '0.9rem' }}>
-                {t('profile_view_resume')}
-              </Link>
+              <div className="profile-detail-text">
+                {t('profile_detail').split('\n\n').map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           </div>
         </div>

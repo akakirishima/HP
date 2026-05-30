@@ -20,18 +20,22 @@ export default function PageRouter() {
   return (
     <Layout title="My App" activeHref={location.pathname} route={location.pathname}>
       <Routes>
-        {routes.map(({ path, title, titleKey, Component, seoImage }) => (
-          <Route
-            key={path}
-            path={path}
-            element={
-              <Suspense fallback={<div className="page page--medium">{t('loading')}</div>}>
-                {!path.includes(':') && <SEO title={titleKey ? t(titleKey) : title} url={buildUrl(path)} image={seoImage} />}
-                <Component />
-              </Suspense>
-            }
-          />
-        ))}
+        {routes.map(({ path, title, titleKey, Component, seoImage }) => {
+          const seoTitle = path === '/' ? undefined : titleKey ? t(titleKey) : title;
+
+          return (
+            <Route
+              key={path}
+              path={path}
+              element={
+                <Suspense fallback={<div className="page page--medium">{t('loading')}</div>}>
+                  {!path.includes(':') && <SEO title={seoTitle} url={buildUrl(path)} image={seoImage} />}
+                  <Component />
+                </Suspense>
+              }
+            />
+          );
+        })}
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

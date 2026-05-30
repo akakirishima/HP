@@ -13,7 +13,7 @@
   <rect width="1200" height="630" fill="url(#bg)" />
   <rect x="80" y="80" width="1040" height="470" rx="36" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.22)" />
   <text x="140" y="250" font-family="'Inter', 'Noto Sans JP', sans-serif" font-size="54" font-weight="700" fill="url(#text)">
-    akakirisima
+    akakirishima
   </text>
   <text x="140" y="330" font-family="'Inter', 'Noto Sans JP', sans-serif" font-size="28" fill="#E0F2FE" letter-spacing="3">
     Web Developer / UI Designer

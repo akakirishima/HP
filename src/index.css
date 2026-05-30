@@ -777,6 +777,14 @@ select:focus-visible {
   margin-bottom: 1.5rem;
 }
 
+.profile-bio p {
+  margin: 0 0 1rem;
+}
+
+.profile-bio p:last-child {
+  margin-bottom: 0;
+}
+
 .profile-expanded {
   max-height: 0;
   overflow: hidden;
@@ -797,6 +805,14 @@ select:focus-visible {
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
   line-height: 1.8;
+}
+
+.profile-detail-text p {
+  margin: 0 0 1rem;
+}
+
+.profile-detail-text p:last-child {
+  margin-bottom: 0;
 }
 
 /* =============================================

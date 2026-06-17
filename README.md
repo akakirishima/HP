@@ -1,95 +1,122 @@
-# Project Overview
+# akakirishima portfolio
 
-This is a React + TypeScript application scaffolded with Vite. The app has been stabilized by recreating a clean `src/App.tsx` and hardening the root mounting logic.
+宮崎で Web 開発、アプリ開発、AI 研究に取り組む akakirishima のポートフォリオサイトです。
 
-## Quick Start
+制作物、経歴、外部掲載記事、ブログ、問い合わせ導線を 1 つの React アプリとしてまとめています。
 
-- Prerequisites: Node.js 18+ and npm 9+
-- Install dependencies: `npm install`
-- Start dev server: `npm run dev`
-- Build for production: `npm run build`
-- Preview production build: `npm run preview`
+## 目的
 
-## Notes
+- 採用担当者や共同開発者が、技術スタックと制作実績を短時間で確認できるようにする
+- 経歴、制作物、ブログ記事を URL で共有しやすい形に整理する
+- 日本語、英語、韓国語、中国語の表示切替に対応し、海外イベントや留学経験も伝えやすくする
+- SEO、OGP、sitemap、robots.txt をビルド時に整え、公開後の検索・共有に耐える構成にする
 
-- The root element is validated in `src/main.tsx` to avoid null assertion crashes.
-- Choose and set a project license in `package.json` (currently `UNLICENSED`). If you decide on an open-source license (e.g., MIT), also add a `LICENSE` file at the repo root.
-- Optional envs: set `VITE_GA_ID` for Google Analytics and `VITE_SITE_URL` for `robots.txt`/`sitemap.xml`.
-- Contact form envs: set `VITE_CONTACT_ENDPOINT` and (optionally) `VITE_CONTACT_EMAIL`.
-- Optional Google Forms field envs: `VITE_CONTACT_GOOGLE_ENTRY_NAME`, `VITE_CONTACT_GOOGLE_ENTRY_EMAIL`, `VITE_CONTACT_GOOGLE_ENTRY_MESSAGE`.
-- `VITE_CONTACT_ENDPOINT` behavior:
-  - If it is a CORS-enabled API endpoint, the app verifies response status and shows success/error accurately.
-  - If it is a Google Forms URL, use either `.../viewform` or `.../formResponse`; the app normalizes to `formResponse`, submits with `no-cors`, and shows an "unconfirmed" status.
-  - The built-in Google Forms entry IDs are valid only for the default form (`1FAIpQLScW3NCZd1melXGh758wsPu1F1FrqjdL_PDCJlgZVcoEoNenoQ`). For any other form, configure all three `VITE_CONTACT_GOOGLE_ENTRY_*` values.
+## 主な機能
 
----
+- Home: プロフィール、最新情報、掲載・参加実績、スキル一覧
+- Work: 学業、研究、ハッカソン、アルバイト、団体活動を時系列で表示
+- Blog: Markdown 管理の記事一覧と詳細表示
+- Portfolio: 主要プロジェクトの一覧と詳細ページ
+- Contact: Google Forms または CORS 対応 API へ送信できる問い合わせフォーム
+- SEO: ページ別 title / description / canonical / OGP / JSON-LD
+- i18n: `ja`, `en`, `ko`, `zh` の表示切替
 
-# React + TypeScript + Vite (Template Notes)
+## 技術スタック
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Runtime: React 19, TypeScript, Vite
+- Routing: React Router
+- Markdown: `gray-matter`, `react-markdown`, `remark-gfm`
+- SEO: `react-helmet-async`, JSON-LD, sitemap / robots 生成スクリプト
+- Analytics: `react-ga4`
+- Styling: CSS modules ではなく、アプリ共通の CSS とコンポーネントクラスで管理
 
-Currently, two official plugins are available:
+## コンテンツ管理
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ブログ記事は `src/content/blog/<id>/index.<locale>.md` に配置します。
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+src/content/blog/
+  ai-agent-challenge-2026/
+    index.ja.md
+    index.en.md
+    index.ko.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+各 Markdown には frontmatter を持たせ、`src/data/posts.ts` がビルド時に読み込みます。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+主な frontmatter:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `id`: 記事 ID。URL `/blog/:id` と一致させる
+- `locale`: `ja`, `en`, `ko`
+- `title`: 一覧・詳細・SEO に使うタイトル
+- `excerpt`: 一覧・SEO に使う要約
+- `date`: 公開日
+- `tags`: タグ配列
+- `order`: 一覧表示順
+- `image`: 任意の OGP 画像
+
+制作物データは `src/data/projects.ts`、掲載実績は `src/data/featuredAppearances.ts`、News は `src/data/news.ts` で管理します。
+
+## セットアップ
+
+```bash
+npm install
+npm run dev
 ```
+
+開発サーバー起動後、Vite が表示するローカル URL を開いて確認します。
+
+## ビルド
+
+```bash
+npm run build
+npm run preview
+```
+
+`npm run build` では、以下を順に実行します。
+
+1. `scripts/generate-robots.mjs`
+2. `scripts/generate-sitemap.mjs`
+3. TypeScript build
+4. Vite production build
+
+## 環境変数
+
+すべて任意です。未設定でもローカル表示とビルドは可能です。
+
+| 変数 | 用途 |
+| --- | --- |
+| `VITE_SITE_URL` | canonical、sitemap、robots.txt の基準 URL |
+| `VITE_GA_ID` | Google Analytics の measurement ID |
+| `VITE_CONTACT_ENDPOINT` | 問い合わせフォームの送信先 |
+| `VITE_CONTACT_EMAIL` | 直接連絡先として表示するメールアドレス |
+| `VITE_CONTACT_GOOGLE_ENTRY_NAME` | Google Forms の名前 field ID |
+| `VITE_CONTACT_GOOGLE_ENTRY_EMAIL` | Google Forms の email field ID |
+| `VITE_CONTACT_GOOGLE_ENTRY_MESSAGE` | Google Forms の本文 field ID |
+
+`VITE_CONTACT_ENDPOINT` に Google Forms の URL を指定した場合、アプリ側で `formResponse` に正規化して送信します。Google Forms はブラウザから送信結果を厳密に検証できないため、UI では送信済みとして扱います。
+
+## 検証
+
+```bash
+npm run lint
+npm run build
+```
+
+確認する観点:
+
+- `/`, `/work`, `/blog`, `/portfolio`, `/contact` が表示できる
+- `/blog/:id` と `/projects/:id` の直接アクセスで 404 にならない
+- 言語切替で主要なテキストが空にならない
+- `public/sitemap.xml` に公開ルート、公開記事、公開プロジェクトが出力される
+- `prefers-reduced-motion` 環境でも主要コンテンツが読める
+
+## 関連メモ
+
+- [HP 改善・運用メモ](docs/hp-requirements.md)
+- [ブログ Markdown 運用メモ](docs/blog-markdown-migration-requirements.md)
+- [AI Agent Challenge 2026 反映メモ](docs/blog-post-ai-agent-challenge-2026-requirements.md)
+
+## ライセンス
+
+このリポジトリはポートフォリオサイト本体です。現時点では `package.json` のとおり `UNLICENSED` としています。

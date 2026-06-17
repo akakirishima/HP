@@ -34,7 +34,7 @@ I also hit Cannot connect to the Docker daemon at unix:///.../docker.sock, which
 
 ・Run make up
 
-・Verify services with curl localhost:8080 and curl localhost:3100
+・Verify the local API and frontend endpoints with curl
 
 ・Create a scoring Issue and post /score
 

@@ -34,7 +34,7 @@ Docker デーモン未起動の状態で Cannot connect to the Docker daemon at 
 
 ・make up を実行
 
-・curl localhost:8080 と curl localhost:3100 で起動確認
+・ローカル環境の API / frontend エンドポイントを curl で起動確認
 
 ・採点用 Issue を作成して本文に /score を投稿
 

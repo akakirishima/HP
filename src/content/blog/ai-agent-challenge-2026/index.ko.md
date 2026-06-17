@@ -34,7 +34,7 @@ image: "/og/blog-designing-for-ai.svg"
 
 ・make up 실행
 
-・curl localhost:8080 과 curl localhost:3100 으로 기동 확인
+・로컬 API와 frontend 엔드포인트를 curl로 기동 확인
 
 ・채점용 Issue 생성 후 본문에 /score 입력
 
